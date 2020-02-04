@@ -114,7 +114,7 @@ client.login(ayarlar.token);
 //----------------------------------HOSGELDIN-----------------------------//
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
-  const channel = member.guild.channels.find('name', 'kayıt');
+  const channel = member.guild.channels.find('name', 'KAYIT KANALI ADI');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
@@ -122,10 +122,19 @@ client.on('guildMemberAdd', member => {
         .addField(`Kayıt Olmak İçin`,`Bulunduğumuz Chate Gerçek İsmini Ve Yaşını Yaz!`)
   channel.sendEmbed(embed); 
 });
+
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
-var rol = member.guild.roles.get("674253915214184479")
-var rol2 = member.guild.roles.get("674253915214184479")
+var rol = member.guild.roles.get("GELİNCE VERİLECEK ROL ID")
+var rol2 = member.guild.roles.get("GELİNCE VERİLECEK ROL ID")
 member.addRole(rol)
 member.addRole(rol2)
    })
+//----------------------------------HOSGELDIN-----------------------------//
+client.on("guildMemberAdd", async member => {
+  const kanal = member.guild.channels.find("name", "KAYIT KANALI ADI");
+  kanal.sendMessage(
+      `Selam ${member} HOŞGELDİN.`
+  );
+});
+//----------------------------------HOSGELDIN-----------------------------//
