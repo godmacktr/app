@@ -29,7 +29,7 @@ exports.conf = {
   permLevel: 0
 };
 exports.help = {
-  name: "erkek",
+  name: "kız",
   description: "ArdaDemr Kayıt Sistemi",
   usage: "ArdaDemr Kayıt Sistemi"
 };

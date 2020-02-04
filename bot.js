@@ -111,3 +111,15 @@ client.on('error', e => {
 client.login(ayarlar.token);
 
 //--------------------------------KODLAMALAR-------------------------------\\
+//----------------------------------HOSGELDIN-----------------------------//
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+  const channel = member.guild.channels.find('name', 'KAYIT KANALI ADI');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('#e7a3ff')
+        .setAuthor(`Kayıt Sistemi`)
+        .addField(`Kayıt Olmak İçin`,`Bulunduğumuz Chate Gerçek İsmini Ve Yaşını Yaz!`)
+  channel.sendEmbed(embed); 
+});
+//----------------------------------HOSGELDIN-----------------------------//
