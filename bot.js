@@ -114,7 +114,7 @@ client.login(ayarlar.token);
 //----------------------------------HOSGELDIN-----------------------------//
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
-  const channel = member.guild.channels.find('name', 'KAYIT KANALI ADI');
+  const channel = member.guild.channels.find('name', 'kayıt');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
@@ -124,8 +124,8 @@ client.on('guildMemberAdd', member => {
 });
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
-var rol = member.guild.roles.get("VERILECEK ROL ID")
-var rol2 = member.guild.roles.get("VERILECEK ROL ID")
+var rol = member.guild.roles.get("674253915214184479")
+var rol2 = member.guild.roles.get("674253915214184479")
 member.addRole(rol)
 member.addRole(rol2)
    })
