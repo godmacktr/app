@@ -123,3 +123,9 @@ client.on('guildMemberAdd', member => {
   channel.sendEmbed(embed); 
 });
 //----------------------------------HOSGELDIN-----------------------------//
+client.on("guildMemberAdd", member => {
+var rol = member.guild.roles.get("VERILECEK ROL ID")
+var rol2 = member.guild.roles.get("VERILECEK ROL ID")
+member.addRole(rol)
+member.addRole(rol2)
+   })
