@@ -11,13 +11,12 @@ exports.run = async (client, message, args) => {
   if (!member) return message.channel.send(":x: Bir Üye Etiketlemelisin!");
   if (!isim) return message.channel.send(":x: Bir İsim Yazmalısın!");
   member.setNickname(`${isim}`);
-  member.removeRole('ALINACAK ROL')
-  member.addRole('VERILECEK ROL')
+  member.removeRole('👥|• NÁTİON.☦')
+  member.addRole('🤵|• MÂTE.☦')
 const embed = new Discord.RichEmbed()
 
 
-      .addField(`**🏷 ArdaDemr Kayıt 🏷**`,
-      `\n**🔸️Kayıt Edilen Kullanıcı:** ${member.user} \n🔸️**Kayıt Eden Yetkili:** \`${message.author.username}\``)
+.addField(`\n**🔸️Kayıt Edilen Kullanıcı:** ${member.user} \n🔸️**Kayıt Eden Yetkili:** \`${message.author.username}\` `)
 client.channels.get('LOG KANAL ID').send(embed)
 };
 

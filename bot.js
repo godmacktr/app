@@ -112,16 +112,34 @@ client.login(ayarlar.token);
 
 //--------------------------------KODLAMALAR-------------------------------\\
 //----------------------------------HOSGELDIN-----------------------------//
-client.on('guildMemberAdd', member => {
+
+client.on("guildMemberAdd", member => {
+  let user = member.user;
   let guild = member.guild;
-  const channel = member.guild.channels.find('name', 'KAYIT KANALI ADI');
-  if (!channel) return;
+  if (member.guild.id !== "538799575029252097") return; //Sunucu ID GİR
+  let eskiNick = member.user.username;
+  const id = "665804746531143724"; //Kanal id gir
+  const channel = member.guild.channels.get(id);
   const embed = new Discord.RichEmbed()
-  .setColor('#e7a3ff')
-        .setAuthor(`Kayıt Sistemi`)
-        .addField(`Kayıt Olmak İçin`,`Bulunduğumuz Chate Gerçek İsmini Ve Yaşını Yaz!`)
-  channel.sendEmbed(embed); 
+    .setDescription(
+      "**``" +
+        guild.name +
+        "``** **Sunucusuna, Hoş Geldin!** \n > **" +
+        user +
+        "** Senin İle Beraber, **" +
+        guild.memberCount +
+        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim Yaş** Verebilir Misin? \n >    Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
+        user.createdAt +
+        "``** "
+    )
+    .setColor("RANDOM")
+    .setTimestamp()
+    .setFooter(
+      "Create By Toprak",
+    )
+  channel.send({ embed });
 });
+
 
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
