@@ -134,23 +134,21 @@ client.on("guildMemberAdd", member => {
     )
     .setColor("RANDOM")
     .setTimestamp()
-    .setFooter(
-      "Create By Toprak",
-    )
+
   channel.send({ embed });
 });
 
 
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
-var rol = member.guild.roles.get("GELİNCE VERİLECEK ROL ID")
-var rol2 = member.guild.roles.get("GELİNCE VERİLECEK ROL ID")
+var rol = member.guild.roles.get("668000071853408266")
+var rol2 = member.guild.roles.get("668000071853408266")
 member.addRole(rol)
 member.addRole(rol2)
    })
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", async member => {
-  const kanal = member.guild.channels.find("name", "KAYIT KANALI ADI");
+  const kanal = member.guild.channels.find("name", "678543790033600522");
   kanal.sendMessage(
       `Selam ${member} HOŞGELDİN.`
   );

@@ -16,10 +16,8 @@ exports.run = async (client, message, args) => {
 const embed = new Discord.RichEmbed()
 
 
-.addField(`\n**🔸️Kayıt Edilen Kullanıcı:** ${member.user} \n🔸️**Kayıt Eden Yetkili:** \`${message.author.username}\` `)
-client.channels.get('LOG KANAL ID').send(embed)
-};
 
+};
 exports.conf = {
   enabled: true,
   guildOnly: true,

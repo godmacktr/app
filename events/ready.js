@@ -7,9 +7,8 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
 var oyun = [
-        "ArdaDemr Youtube",
-        "ArdaDemr Kayıt Botu",
-        "Kayıt Sistemi"  
+        "VORTEX TEAM; REGİSTER",
+
     ];
 
     setInterval(function() {
