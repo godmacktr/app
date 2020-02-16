@@ -15,10 +15,10 @@ exports.run = async (client, message, args) => {
   member.addRole('🤵|• MÂTE.☦')
 const embed = new Discord.RichEmbed()
 
-
-
-};
-exports.conf = {
+   .addField(`** VФЯΓΞЖ REGİSTER ** `,
+   `\n**Kayıt Olundu! Kayıt Edilen Kullanıcı :
+};             
+  exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: ["nick", "isim"],
