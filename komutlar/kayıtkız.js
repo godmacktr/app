@@ -11,8 +11,8 @@ exports.run = async (client, message, args) => {
   if (!member) return message.channel.send(":x: Bir Üye Etiketlemelisin!");
   if (!isim) return message.channel.send(":x: Bir İsim Yazmalısın!");
   member.setNickname(`${isim}`);
-  member.removeRole('👥|• NÁTİON.☦')
-  member.addRole('💎|• LADY.☦')
+  member.removeRole('668000071853408266')
+  member.addRole('668007676642328576')
 const embed = new Discord.RichEmbed()
 
 

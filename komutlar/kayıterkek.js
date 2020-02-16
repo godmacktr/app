@@ -11,13 +11,11 @@ exports.run = async (client, message, args) => {
   if (!member) return message.channel.send(":x: Bir Üye Etiketlemelisin!");
   if (!isim) return message.channel.send(":x: Bir İsim Yazmalısın!");
   member.setNickname(`${isim}`);
-  member.removeRole('👥|• NÁTİON.☦')
-  member.addRole('🤵|• MÂTE.☦')
+  member.removeRole('668000071853408266')
+  member.addRole('668004664230412288')
 const embed = new Discord.RichEmbed()
 
-   .addField(`** VФЯΓΞЖ REGİSTER ** `,
-   `\n**Kayıt Olundu! Kayıt Edilen Kullanıcı :
-};             
+};          
   exports.conf = {
   enabled: true,
   guildOnly: true,
