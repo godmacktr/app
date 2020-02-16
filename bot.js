@@ -89,13 +89,6 @@ client.unload = command => {
   });
 };
 
-
-client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-    msg.reply('Aleyküm selam,  hoş geldin ^^');
-  }
-});
-
 client.elevation = message => {
   if(!message.guild) {
 	return; }
