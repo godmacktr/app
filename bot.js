@@ -116,9 +116,9 @@ client.login(ayarlar.token);
 client.on("guildMemberAdd", member => {
   let user = member.user;
   let guild = member.guild;
-  if (member.guild.id !== "538799575029252097") return; //Sunucu ID GİR
+  if (member.guild.id !== "667404257921597440") return; //Sunucu ID GİR
   let eskiNick = member.user.username;
-  const id = "665804746531143724"; //Kanal id gir
+  const id = "678543790033600522"; //Kanal id gir
   const channel = member.guild.channels.get(id);
   const embed = new Discord.RichEmbed()
     .setDescription(
@@ -128,7 +128,7 @@ client.on("guildMemberAdd", member => {
         user +
         "** Senin İle Beraber, **" +
         guild.memberCount +
-        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim Yaş** Verebilir Misin? \n >    Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
+        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim Yaş** Verebilir Misin? \n >  @🎩|• Registration Officer.☦ Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
         user.createdAt +
         "``** "
     )
