@@ -7,7 +7,7 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
 var oyun = [
-        "VORTEX TEAM; REGİSTER",
+        "VФЯΓΞЖ TEAM; REGİSTER",
 
     ];
 
@@ -15,7 +15,7 @@ var oyun = [
 
         var random = Math.floor(Math.random()*(oyun.length-0+1)+0);
 
-        client.user.setActivity(oyun[random], "https://www.twitch.tv/fyukas" );
+        client.user.setActivity(oyun[random], "https://www.twitch.tv/" );
         }, 2 * 2500);
     
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] BOT: Aktif, Komutlar yüklendi!`);
