@@ -132,7 +132,7 @@ client.on("guildMemberAdd", member => {
         user +
         "** Senin İle Beraber, **" +
         guild.memberCount +
-        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim Yaş** Verebilir Misin? \n >  @🎩|• Registration Officer.☦ Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
+        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim** Verebilir Misin? \n >  @🎩|• Registration Officer.☦ Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
         user.createdAt +
         "``** "
     )
