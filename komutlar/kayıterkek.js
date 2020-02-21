@@ -11,8 +11,8 @@ exports.run = async (client, message, args) => {
   if (!member) return message.channel.send(":x: Bir Üye Etiketlemelisin!");
   if (!isim) return message.channel.send(":x: Bir İsim Yazmalısın!");
   member.setNickname(`${isim}`);
-  member.removeRole('680078573239140465')
-  member.addRole('680040204790399054')
+  member.removeRole('668000071853408266')
+  member.addRole('668004664230412288')
 const embed = new Discord.RichEmbed()
 
 };          
@@ -25,5 +25,5 @@ const embed = new Discord.RichEmbed()
 exports.help = {
   name: "erkek",
   description: "ArdaDemr Kayıt Sistemi",
-  usage: "erkek"
+  usage: "ArdaDemr Kayıt Sistemi"
 };
