@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
   let yas = args[2];
   if (!yas)
     return  message.channel.send({embed:{
-	color: "RED",
+	color: "#01062c",
 	fields: [
 		{
 			name: ':robot: Bilgi',

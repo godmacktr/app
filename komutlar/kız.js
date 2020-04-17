@@ -71,13 +71,13 @@ exports.run = async (client, message, args) => {
 	},
 }})
   await member.setNickname(`${consts.tag} ${isim} ${yas}`);
-  var erkek = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role)
-  var erkek2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role2)
+  var kız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.girl_role)
+  var kız2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.girl_role2)
   var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
-  if(erkek !== undefined){
-    member.roles.add(erkek)
-    if(erkek2 !==undefined){
-      member.roles.add(erkek2)
+  if(kız !== undefined){
+    member.roles.add(kız)
+    if(kız2 !==undefined){
+      member.roles.add(kız2)
     }
     if(kayıtsız !==undefined && message.member.roles.cache.has(consts.unregister_role)) {
       member.roles.remove(kayıtsız)  
@@ -92,11 +92,11 @@ exports.run = async (client, message, args) => {
   
   
   return  message.channel.send({embed:{
-	color: "BLACK",
+	color: "#800af8",
 	fields: [
 		{
 			name: ':white_check_mark: Kaydı Yapıldı',
-			value: `${member.user} **adlı üyeye** <@&${consts.man_role}> **rolünü verip ismini**  \`${consts.tag} ${isim} ${yas}\` **olarak ayarladım!**`,
+			value: `${member.user} **adlı üyeye** <@&${consts.girl_role}> **rolünü verip ismini**  \`${consts.tag} ${isim} ${yas}\` **olarak ayarladım!**`,
 		},
 	],
 	timestamp: new Date(),
@@ -106,7 +106,6 @@ exports.run = async (client, message, args) => {
 	},
 }})
   
- // return message.channel.send(embed)
 };
 exports.conf = {
   enabled: true,
@@ -116,7 +115,7 @@ exports.conf = {
   permLevel: 0
 };
 exports.help = {
-  name: "erkek",
-  description: "Sunucuda Erkek kaydı",
+  name: "kız",
+  description: "Sunucuda Kız kaydı",
   usage: "kayıt isim yaş"
 };
