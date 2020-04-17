@@ -145,7 +145,7 @@ client.on("guildMemberAdd", member => {
 
 
 client.on('ready', ()=>{
-client.channels.get('679669296984752183').join()
+
 })
 
 

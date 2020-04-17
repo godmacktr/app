@@ -7,15 +7,29 @@ var prefix = ayarlar.prefix;
 
 
 module.exports = client => {
-  console.log(`${client.user.username} ismi ile giriş yapıldı!`);
-  client.user.setStatus("online");
-  //idle = boşta
-  //dnd = rahatsız etmeyin
-  //online = çevrimiçi
-  console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`VФЯΓΞЖ TEAM; REGİSTER `);
+  console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.users.cache.size + ` kullanıcıya hizmet veriliyor!`);
+ 
+  
+  //---------AKTİFLİK DURUMU İÇİN---------
+  client.user.setStatus("dnd");
+  //idle = BOŞTA
+  //online = ÇEVRİMİÇİ
+  //dnd = RAHATSIZ ETMEYİN
+  //---------AKTİFLİK DURUMU İÇİN---------
+  
+  
+  //---------DURUM İÇİN---------
+  //client.user.setActivity(`Deneme`,{ type: 'LISTENING' });
   //LISTENING = DİNLİYOR
   //WATCHING = İZLİYOR
   //PLAYING = OYNUYOR 
-  console.log(`${client.user.username}: Şu an ` + client.channels.size + ` adet kanala, ` + client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriliyor!`);
+  //---------DURUM İÇİN---------
+  
+  
+  //---------YAYIN İÇİN---------
+  client.user.setActivity("Xountex", {
+  type: "STREAMING",
+  url: "https://www.twitch.tv/xountex"
+  });
+  //---------YAYIN İÇİN---------
 };
