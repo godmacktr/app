@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
       member.roles.remove(kayıtsız)  
     }
   }else{
-   return message.channel.send("Erkek Rolünü Bulamadım :robot:").then(msg => {
+   return message.channel.send("Kız Rolünü Bulamadım :robot:").then(msg => {
     msg.delete({ timeout: 5000 })
   })
   .catch(x =>{console.log(x)});
