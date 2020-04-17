@@ -118,28 +118,45 @@ client.login(ayarlar.token);
 //----------------------------------HOSGELDIN-----------------------------//
 
 client.on("guildMemberAdd", member => {
-  let user = member.user;
-  let guild = member.guild;
-  if (member.guild.id !== "667404257921597440") return; //Sunucu ID GİR
-  let eskiNick = member.user.username;
-  const id = "678543790033600522"; //Kanal id gir
-  const channel = member.guild.channels.get(id);
-  const embed = new Discord.RichEmbed()
-    .setDescription(
-      "**``" +
-        guild.name +
-        "``** **Sunucusuna, Hoş Geldin!** \n > **" +
-        user +
-        "** Senin İle Beraber, **" +
-        guild.memberCount +
-        "** Üye Olduk.  \n >  Kayıt Olmak İçin **İsim** Verebilir Misin? \n >  @🎩|• Registration Officer.☦ Rolünde Ki **Yetkililer** İlgilenecektir.\n > **Hesap Oluşturma Tarihi**: **``" +
-        user.createdAt +
-        "``** "
-    )
-    .setColor("RANDOM")
-    .setTimestamp()
+ const ok_embed = {
+    thumbnail: {
+      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"//user_image_url
+    },
+    image: {
+      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
+    },
+    description:
+      "<a:6196cd02c06942349f1952b060cec63a:692442144547536976>  " +
+      //"<@" +
+      member.user.username +
+      //">" +
+      " Seninle birlikte **" +
+      member.guild.memberCount +
+      "** Kişiyiz \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Bu kullanıcı : **GÜVENLİ** \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Hesap kuruluş zamanı: **" +
+      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
+      "**",
+    timestamp: new Date()
+  };
 
-  channel.send({ embed });
+  const err_embed = {
+    thumbnail: {
+      url:"https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
+    },
+    image: {
+      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
+    },
+    description:
+      "<a:6196cd02c06942349f1952b060cec63a:692442144547536976>  " +
+      //"<@" +
+      member.user.username +
+      //">" +
+      " Seninle birlikte **" +
+      member.guild.memberCount +
+      "** Kişiyiz \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n <a:hayir:686600377537134664> Bu kullanıcı : **TEHLİKELİ** \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Hesap kuruluş zamanı: **" +
+      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
+      "**",
+    timestamp: new Date()
+  };
 });
 ////////////////////////////////////////////////////////////////////////////
 
@@ -152,8 +169,7 @@ client.on('ready', ()=>{
 client.on('message', (message)=>{
   if(message.content===".")
     {
-        var erkek = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role)
-        var erkek2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role2)
+        
     }
 })
 

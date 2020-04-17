@@ -1,6 +1,12 @@
 const Discord = require("discord.js");
 const consts = require("../consts.json");
 const ayarlar = require("../ayarlar.json");
+
+
+
+
+
+
 exports.run = async (client, message, args) => {
   if (!message.member.roles.has(consts.bot_komut_role) &&!message.member.hasPermission("ADMINISTRATOR"))
     return message.channel.sendEmbed(
@@ -53,7 +59,21 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
     );
   await member.setNickname(`${consts.tag} ${isim} ${yas}`);
- // const role = client.guilds.get(ayarlar.server_id).roles.find(role => role.name === consts.man_role)
+  var erkek = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role)
+  var erkek2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role2)
+  var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
+  if(erkek !== undefined){
+    member.roles.add(erkek)
+    if(erkek2 !==undefined){
+      member.roles.add(erkek2)
+    }
+    if(kayıtsız !==undefined){
+    member.roles.remove(kayıtsız)  
+    }
+  }else{
+    message.channel.send()
+  }
+  
   member.addRole(consts.man_role); // erkek 1
   member.addRole(consts.man_role2); // erkek 1
   member.removeRole(consts.kayitsiz_role); // kayıtsız 2
