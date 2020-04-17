@@ -8,7 +8,7 @@ const ayarlar = require("../ayarlar.json");
 
 
 exports.run = async (client, message, args) => {
-  if (!message.member.roles.has(consts.bot_komut_role) &&!message.member.hasPermission("ADMINISTRATOR"))
+  if (!message.member.roles.cache.has(consts.bot_komut_role) &&!message.member.hasPermission("ADMINISTRATOR"))
     return message.channel.sendEmbed(
       new Discord.RichEmbed()
         .addField(
@@ -71,7 +71,10 @@ exports.run = async (client, message, args) => {
     member.roles.remove(kayıtsız)  
     }
   }else{
-    message.channel.send()
+   return message.channel.send("Erkek Rolünü Bulamadım :robot:").then(msg => {
+    msg.delete({ timeout: 2000 })
+  })
+  .catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
   }
   
   member.addRole(consts.man_role); // erkek 1
@@ -97,6 +100,6 @@ exports.conf = {
 };
 exports.help = {
   name: "erkek",
-  description: "Sunucuya kaydolmaya ne dersin ?",
+  description: "Sunucuda Erkek kaydı",
   usage: "kayıt isim yaş"
 };
