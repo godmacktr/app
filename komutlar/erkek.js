@@ -72,9 +72,9 @@ exports.run = async (client, message, args) => {
     }
   }else{
    return message.channel.send("Erkek Rolünü Bulamadım :robot:").then(msg => {
-    msg.delete({ timeout: 2000 })
+    msg.delete({ timeout: 3000 })
   })
-  .catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
+  .catch(x =>{console.log(x)});
   }
   
   member.addRole(consts.man_role); // erkek 1
