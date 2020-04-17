@@ -152,7 +152,8 @@ client.on('ready', ()=>{
 client.on('message', (message)=>{
   if(message.content===".")
     {
-        var rol2 = client.guilds.get(ayarlar.server_id).roles.cache.get("")
+        var erkek = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role)
+        var erkek2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role2)
     }
 })
 
@@ -160,12 +161,8 @@ client.on('message', (message)=>{
 
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
-var rol = member.guild.roles.get("668000071853408266")
-var rol2 = member.guild.roles.get("668000071853408266")
-
-member.addRole(rol)
-member.addRole(rol2)
-   })
+  
+})
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", async member => {
   const kanal = member.guild.channels.find("name", "678543790033600522");
