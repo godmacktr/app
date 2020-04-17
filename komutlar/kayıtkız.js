@@ -1,31 +1,122 @@
 const Discord = require("discord.js");
+const consts = require("../consts.json");
+const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission("MANAGE_NICKNAMES"))
-    return message.channel.send(
-      `❌ Bu Komutu Kullanabilmek için \`İsimleri Yönet\` Yetkisine Sahip Olmalısın!`
-    );
-  let member = message.mentions.members.first();
-  let isim = args.slice(1).join(" ");
-  let yas = args.slice(1).join(" ");
-  if (!member) return message.channel.send(":x: Bir Üye Etiketlemelisin!");
-  if (!isim) return message.channel.send(":x: Bir İsim Yazmalısın!");
-  member.setNickname(`${isim}`);
-  member.removeRole('668000071853408266')
-  member.addRole('668007676642328576')
-const embed = new Discord.RichEmbed()
-
-
-
+  if (!message.member.roles.cache.has(consts.bot_komut_role) && !message.member.hasPermission("ADMINISTRATOR"))
+   return  message.channel.send({embed:{
+	color: "RED",
+	fields: [
+		{
+			name: ':robot: Bilgi',
+			value: 'Bu komudu kullanmak için yeterli yetkin yok.',
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL({dynamic:true}),
+	},
+}})
+  let kullanıcı = message.mentions.users.first();
+  if (!kullanıcı)
+  return  message.channel.send({embed:{
+	color: "RED",
+	fields: [
+		{
+			name: ':robot: Bilgi',
+			value: ' Bir kullanıcı etiketlemelisin!',
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL({dynamic:true}),
+	},
+}})
+  
+  let user = message.mentions.users.first();
+  let rol = message.mentions.roles.first();
+  let member = message.guild.member(kullanıcı);
+  let isim = args[1];
+  if (!isim)
+     return  message.channel.send({embed:{
+	color: "RED",
+	fields: [
+		{
+			name: ':robot: Bilgi',
+			value: ' Bir isim girmelisin!',
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL({dynamic:true}),
+	},
+}})
+  let yas = args[2];
+  if (!yas)
+    return  message.channel.send({embed:{
+	color: "RED",
+	fields: [
+		{
+			name: ':robot: Bilgi',
+			value: ' Bir yaş girmelisin!',
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL({dynamic:true}),
+	},
+}})
+  await member.setNickname(`${consts.tag} ${isim} ${yas}`);
+  var erkek = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role)
+  var erkek2 = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.man_role2)
+  var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
+  if(erkek !== undefined){
+    member.roles.add(erkek)
+    if(erkek2 !==undefined){
+      member.roles.add(erkek2)
+    }
+    if(kayıtsız !==undefined && message.member.roles.cache.has(consts.unregister_role)) {
+      member.roles.remove(kayıtsız)  
+    }
+  }else{
+   return message.channel.send("Erkek Rolünü Bulamadım :robot:").then(msg => {
+    msg.delete({ timeout: 5000 })
+  })
+  .catch(x =>{console.log(x)});
+}  
+ 
+  
+  
+  return  message.channel.send({embed:{
+	color: "BLACK",
+	fields: [
+		{
+			name: ':white_check_mark: Kaydı Yapıldı',
+			value: `${member.user} **adlı üyeye** <@&${consts.man_role}> **rolünü verip ismini**  \`${consts.tag} ${isim} ${yas}\` **olarak ayarladım!**`,
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL({dynamic:true}),
+	},
+}})
+  
+ // return message.channel.send(embed)
 };
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["nick", "isim"],
+  aliases: ["kız"],
+  kategori: "Yetkili Komutları",
   permLevel: 0
 };
 exports.help = {
-  name: "kız",
-  description: "ArdaDemr Kayıt Sistemi",
-  usage: "ArdaDemr Kayıt Sistemi"
+  name: "erkek",
+  description: "Sunucuda Erkek kaydı",
+  usage: "kayıt isim yaş"
 };

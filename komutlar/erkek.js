@@ -2,11 +2,6 @@ const Discord = require("discord.js");
 const consts = require("../consts.json");
 const ayarlar = require("../ayarlar.json");
 
-
-
-
-
-
 exports.run = async (client, message, args) => {
   if (!message.member.roles.cache.has(consts.bot_komut_role) && !message.member.hasPermission("ADMINISTRATOR"))
    return  message.channel.send({embed:{
@@ -92,19 +87,11 @@ exports.run = async (client, message, args) => {
     msg.delete({ timeout: 5000 })
   })
   .catch(x =>{console.log(x)});
-  }  
-  //member.removeRole('694135884320342087') // kayıtsız 2
- /* let embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .addField(
-      `Ragnarok ${consts.tag}`,
-      ` ${member.user} **adlı üyeye** <@&${consts.man_role}> **rolünü verip ismini**  \`${consts.tag} ${isim} ${yas}\` **olarak ayarladım!**`
-    )
-    .setFooter(message.author.tag, message.author.avatarURL)
-    .setTimestamp();*/
+}  
+ 
   
   
-     return  message.channel.send({embed:{
+  return  message.channel.send({embed:{
 	color: "BLACK",
 	fields: [
 		{
@@ -124,7 +111,7 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["e", "er"],
+  aliases: ["erkek"],
   kategori: "Yetkili Komutları",
   permLevel: 0
 };
