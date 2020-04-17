@@ -9,6 +9,7 @@ const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, message, args) => {
   if (!message.member.roles.cache.has(consts.bot_komut_role) &&!message.member.hasPermission("ADMINISTRATOR"))
+    
     return message.channel.sendEmbed(
       new Discord.RichEmbed()
         .addField(
@@ -21,7 +22,21 @@ exports.run = async (client, message, args) => {
     );
   let kullanıcı = message.mentions.users.first();
   if (!kullanıcı)
-    return message.channel.sendEmbed(
+  return  message.channel.send({embed:{
+	color: 0x0099ff,
+	fields: [
+		{
+			name: ':x: Bilgi',
+			value: ' Bir kullanıcı etiketlemelisin!',
+		},
+	],
+	timestamp: new Date(),
+	footer: {
+		text: message.author.tag, 
+		icon_url: message.author.avatarURL,
+	},
+}})
+   /* return message.channel.sendEmbed(
       new Discord.RichEmbed()
         .addField(
           `<a:632941021809868816:697223088890314773> Bilgi`,
@@ -30,7 +45,7 @@ exports.run = async (client, message, args) => {
         .setColor("2e0101")
         .setFooter(message.author.tag, message.author.avatarURL)
         .setTimestamp()
-    );
+    );*/
   let user = message.mentions.users.first();
   let rol = message.mentions.roles.first();
   let member = message.guild.member(kullanıcı);
@@ -75,7 +90,7 @@ exports.run = async (client, message, args) => {
     msg.delete({ timeout: 3000 })
   })
   .catch(x =>{console.log(x)});
-  }
+  }  
   
   member.addRole(consts.man_role); // erkek 1
   member.addRole(consts.man_role2); // erkek 1
