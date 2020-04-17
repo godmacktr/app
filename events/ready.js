@@ -7,11 +7,9 @@ var prefix = ayarlar.prefix;
 
 
 module.exports = client => {
-  console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.users.cache.size + ` kullanıcıya hizmet veriliyor!`);
- 
-  
+  console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.users.cache.size + ` kullanıcıya hizmet veriliyor!`);  
   //---------AKTİFLİK DURUMU İÇİN---------
-  client.user.setStatus("dnd");
+  // client.user.setStatus("dnd");
   //idle = BOŞTA
   //online = ÇEVRİMİÇİ
   //dnd = RAHATSIZ ETMEYİN

@@ -149,11 +149,20 @@ client.on('ready', ()=>{
 })
 
 
+client.on('message', (message)=>{
+  if(message.content===".")
+    {
+        var rol2 = client.guilds.get(ayarlar.server_id).roles.cache.get("")
+    }
+})
+
+
 
 //----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
 var rol = member.guild.roles.get("668000071853408266")
 var rol2 = member.guild.roles.get("668000071853408266")
+
 member.addRole(rol)
 member.addRole(rol2)
    })
