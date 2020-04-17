@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
 	timestamp: new Date(),
 	footer: {
 		text: message.author.tag, 
-		icon_url: message.author.avatarURL,
+		icon_url: message.author.avatarURL({dynamic:true}),
 	},
 }})
   let kullanıcı = message.mentions.users.first();
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
 	timestamp: new Date(),
 	footer: {
 		text: message.author.tag, 
-		icon_url: message.author.avatarURL,
+		icon_url: message.author.avatarURL({dynamic:true}),
 	},
 }})
   
@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
 	timestamp: new Date(),
 	footer: {
 		text: message.author.tag, 
-		icon_url: message.author.avatarURL,
+		icon_url: message.author.avatarURL({dynamic:true}),
 	},
 }})
   let yas = args[2];
@@ -72,7 +72,7 @@ exports.run = async (client, message, args) => {
 	timestamp: new Date(),
 	footer: {
 		text: message.author.tag, 
-		icon_url: message.author.avatarURL,
+		icon_url: message.author.avatarURL({dynamic:true}),
 	},
 }})
   await member.setNickname(`${consts.tag} ${isim} ${yas}`);
@@ -108,14 +108,14 @@ exports.run = async (client, message, args) => {
 	color: "BLACK",
 	fields: [
 		{
-			name: ':robot: Bilgi',
+			name: ':white_check_mark: Kaydı Yapıldı',
 			value: `${member.user} **adlı üyeye** <@&${consts.man_role}> **rolünü verip ismini**  \`${consts.tag} ${isim} ${yas}\` **olarak ayarladım!**`,
 		},
 	],
 	timestamp: new Date(),
 	footer: {
 		text: message.author.tag, 
-		icon_url: message.author.avatarURL,
+		icon_url: message.author.avatarURL({dynamic:true}),
 	},
 }})
   
