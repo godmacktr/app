@@ -1,31 +1,35 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const http = require('http');
-    app.get("/", (request, response) => {
-    console.log(`Az Önce Bot Ping yedi, Sorun önemli değil merak etme. Hatayı düzelttik.`);
-    response.sendStatus(200);
-    });
-    app.listen(process.env.PORT);
-    setInterval(() => {
-    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-    }, 280000);
-const Discord = require('discord.js');
+const http = require("http");
+app.get("/", (request, response) => {
+  console.log(
+    `Az Önce Bot Ping yedi, Sorun önemli değil merak etme. Hatayı düzelttik.`
+  );
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
+const Discord = require("discord.js");
 const client = new Discord.Client();
-const ayarlar = require('./ayarlar.json');
-const fs = require('fs');
-const moment = require('moment');
-const chalk = require('chalk');
-require('./util/eventLoader')(client);
+const ayarlar = require("./ayarlar.json");
+const consts = require("./consts.json");
+const fs = require("fs");
+const moment = require("moment");
+moment.locale("tr")
+const chalk = require("chalk");
+require("./util/eventLoader")(client);
 
 var prefix = ayarlar.prefix;
 
 const log = message => {
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
+  console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")}] ${message}`);
 };
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-fs.readdir('./komutlar/', (err, files) => {
+fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
   log(`${files.length} komut yüklenecek.`);
   files.forEach(f => {
@@ -52,7 +56,7 @@ client.reload = command => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
-    } catch (e){
+    } catch (e) {
       reject(e);
     }
   });
@@ -67,7 +71,7 @@ client.load = command => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
-    } catch (e){
+    } catch (e) {
       reject(e);
     }
   });
@@ -83,15 +87,16 @@ client.unload = command => {
         if (cmd === command) client.aliases.delete(alias);
       });
       resolve();
-    } catch (e){
+    } catch (e) {
       reject(e);
     }
   });
 };
 
 client.elevation = message => {
-  if(!message.guild) {
-	return; }
+  if (!message.guild) {
+    return;
+  }
   let permlvl = 0;
   if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
   if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
@@ -104,12 +109,12 @@ var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 //   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
 // });
 
-client.on('warn', e => {
-  console.log(chalk.bgYellow(e.replace(regToken, 'that was redacted')));
+client.on("warn", e => {
+  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
 });
 
-client.on('error', e => {
-  console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
+client.on("error", e => {
+  console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
 
 client.login(ayarlar.token);
@@ -118,9 +123,9 @@ client.login(ayarlar.token);
 //----------------------------------HOSGELDIN-----------------------------//
 
 client.on("guildMemberAdd", member => {
- const ok_embed = {
+  const ok_embed = {
     thumbnail: {
-      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"//user_image_url
+      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
     },
     image: {
       url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
@@ -140,7 +145,7 @@ client.on("guildMemberAdd", member => {
 
   const err_embed = {
     thumbnail: {
-      url:"https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
+      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
     },
     image: {
       url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
@@ -157,33 +162,29 @@ client.on("guildMemberAdd", member => {
       "**",
     timestamp: new Date()
   };
+
+  var x = moment(member.user.createdAt)
+    .add(5, "days")
+    .fromNow();
+  x = x.replace("birkaç saniye önce", " ");
+
+  if (!x.includes("önce") || x.includes("sonra") || x == " ") {
+    setTimeout(async () => {
+      if (member.roles.has(consts.unregister_role)) {
+        member.roles.remove(consts.unregister_role);
+      }
+    }, 500);
+    setTimeout(async () => {
+      await member.roles.add(consts.karantina_role);
+    }, 500);
+    member.guild.channels.get(consts.welcome_channel).send(err_embed);
+  } else {
+    setTimeout(async () => {
+      if (!member.roles.has(consts.unregister_role)) {
+        member.roles.add(consts.unregister_role);
+      }
+    }, 500);
+    member.guild.channels.cache.get(consts.welcome_channel).send(ok_embed);
+  }
 });
 ////////////////////////////////////////////////////////////////////////////
-
-
-client.on('ready', ()=>{
-
-})
-
-
-client.on('message', (message)=>{
-  if(message.content===".")
-    {
-        
-    }
-})
-
-
-
-//----------------------------------HOSGELDIN-----------------------------//
-client.on("guildMemberAdd", member => {
-  
-})
-//----------------------------------HOSGELDIN-----------------------------//
-client.on("guildMemberAdd", async member => {
-  const kanal = member.guild.channels.find("name", "678543790033600522");
-  kanal.sendMessage(
-      `Selam ${member} HOŞGELDİN.`
-  );
-});
-//----------------------------------HOSGELDIN-----------------------------//
