@@ -162,7 +162,8 @@ client.on("guildMemberAdd", member => {
       "**",
     timestamp: new Date()
   };
-
+  var karantina = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.karantina_role)
+  var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
   var x = moment(member.user.createdAt)
     .add(5, "days")
     .fromNow();
@@ -170,21 +171,21 @@ client.on("guildMemberAdd", member => {
 
   if (!x.includes("önce") || x.includes("sonra") || x == " ") {
     setTimeout(async () => {
-      if (member.roles.has(consts.unregister_role)) {
-        member.roles.remove(consts.unregister_role);
+      if (member.roles.cache.has(kayıtsız)) {
+        member.roles.remove(kayıtsız);
       }
     }, 500);
     setTimeout(async () => {
-      await member.roles.add(consts.karantina_role);
+      await member.roles.add(karantina);
     }, 500);
-    member.guild.channels.get(consts.welcome_channel).send(err_embed);
+    member.guild.channels.cache.get(consts.welcome_channel).send({embed: err_embed});
   } else {
     setTimeout(async () => {
-      if (!member.roles.has(consts.unregister_role)) {
-        member.roles.add(consts.unregister_role);
+      if (!member.roles.cache.has(kayıtsız)) {
+        member.roles.add(kayıtsız);
       }
     }, 500);
-    member.guild.channels.cache.get(consts.welcome_channel).send(ok_embed);
+    member.guild.channels.cache.get(consts.welcome_channel).send({embed:ok_embed});
   }
 });
 ////////////////////////////////////////////////////////////////////////////
