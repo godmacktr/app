@@ -125,19 +125,19 @@ client.login(ayarlar.token);
 client.on("guildMemberAdd", member => {
   const ok_embed = {
     thumbnail: {
-      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
+      url: member.user.avatarURL({dynamic:true})//user_image_url
     },
     image: {
       url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
     },
     description:
-      "<a:6196cd02c06942349f1952b060cec63a:692442144547536976>  " +
+      ":beginner:  " +
       //"<@" +
-      member.user.username +
+      `${member}` +
       //">" +
       " Seninle birlikte **" +
       member.guild.memberCount +
-      "** Kişiyiz \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Bu kullanıcı : **GÜVENLİ** \n\n <a:6196cd02c06942349f1952b060cec63a:692442144547536976> Hesap kuruluş zamanı: **" +
+      "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :large_orange_diamond: Bu kullanıcı : **GÜVENLİ** \n\n :watch: Hesap kuruluş zamanı: **" +
       moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
       "**",
     timestamp: new Date()
@@ -145,7 +145,7 @@ client.on("guildMemberAdd", member => {
 
   const err_embed = {
     thumbnail: {
-      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif" //user_image_url
+      url: member.user.avatarURL({dynamic:true}) //user_image_url
     },
     image: {
       url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
