@@ -1,6 +1,6 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
+  "//1": "Developed by Chârby",
+  "//2": "Daha fazlası için glitch.com/@charby",
   "//3": "updating this file will download and update your packages",
   "name": "hello-express",
   "version": "0.0.1",
