@@ -129,13 +129,11 @@ client.on("guildMemberAdd", member => {
       url: member.user.avatarURL({dynamic:true})//user_image_url
     },
     image: {
-      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
+      url: "https://i.ibb.co/Jkx38NQ/charby.png"
     },
     description:
       ":beginner:  " +
-      //"<@" +
       `${member}` +
-      //">" +
       " Seninle birlikte **" +
       member.guild.memberCount +
       "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :large_orange_diamond: Bu kullanıcı : **GÜVENLİ** \n\n :watch: Hesap kuruluş zamanı: **" +
@@ -149,13 +147,11 @@ client.on("guildMemberAdd", member => {
       url: member.user.avatarURL({dynamic:true}) //user_image_url
     },
     image: {
-      url: "https://media.giphy.com/media/JoVCQYf3A3R15ONWvb/giphy.gif"
+      url: "https://i.ibb.co/Jkx38NQ/charby.png"
     },
     description:
       ":beginner:  " +
-      //"<@" +
       `${member}` +
-      //">" +
       " Seninle birlikte **" +
       member.guild.memberCount +
       "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :x: Bu kullanıcı : **TEHLİKELİ** \n\n :watch: Hesap kuruluş zamanı: **" +
