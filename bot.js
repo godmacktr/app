@@ -120,8 +120,9 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 //--------------------------------KODLAMALAR-------------------------------\\
-//----------------------------------HOSGELDIN-----------------------------//
 
+
+//----------------------------------HOSGELDIN-----------------------------//
 client.on("guildMemberAdd", member => {
   const ok_embed = {
     thumbnail: {
@@ -188,4 +189,4 @@ client.on("guildMemberAdd", member => {
     member.guild.channels.cache.get(consts.welcome_channel).send({embed:ok_embed});
   }
 });
-////////////////////////////////////////////////////////////////////////////
+//----------------------------------HOSGELDIN-----------------------------//

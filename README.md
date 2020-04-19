@@ -3,7 +3,7 @@
 ![](https://i.ibb.co/Jkx38NQ/charby.png)
 
 
-Selam dostalar. Bugün sizler için hazırlamış olduğum v12 uyumlu register botunda ne yapmanız gerektğini söyleyeceğim.
+Selam dostalar. Bugün sizler için hazırlamış olduğum v12 uyumlu register botunda ne yapmanız gerektiğini söyleyeceğim.
 
 **İYİ KULLANMALAR**
 
@@ -11,6 +11,24 @@ Selam dostalar. Bugün sizler için hazırlamış olduğum v12 uyumlu register b
 
 Yapılması gerekenler
 --
-consts.js ve ayar içindeki id yazan yerleri doldurun.
+consts.json ve ayarlar.json içindeki id yazan yerleri doldurun.
 
-consts.js içindeki id leri koyduktan sonra bot sıkıntız çalışır.
+consts.json ve ayarlar.json içindeki id leri koyduktan sonra bot sıkıntız çalışır.
+
+
+
+
+
+
+
+
+
+
+
+
+TAGS
+----
+v12 , register , register-bot , registerbot 
+, register_bot , kayıt , kayıt-bot , kayıt_bot
+, kayit , kayit-bot , kayit_bot
+, v12register , v12kayıt , v12kayıtbotu
