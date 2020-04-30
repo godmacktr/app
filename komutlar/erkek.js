@@ -79,7 +79,7 @@ exports.run = async (client, message, args) => {
     if(erkek2 !==undefined){
       member.roles.add(erkek2)
     }
-    if(kayıtsız !==undefined && message.member.roles.cache.has(consts.unregister_role)) {
+    if(kayıtsız !==undefined && member.roles.cache.has(consts.unregister_role)) {
       member.roles.remove(kayıtsız)  
     }
   }else{
