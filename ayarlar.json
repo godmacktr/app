@@ -1,6 +1,6 @@
 {
-  "prefix": "r!",
-  "sahip": "SAHİP İD",
+  "sahip": "SAHIP ID",
   "token": "TOKEN",
-  "server_id":"SERVER İD"
+  "server_id":"SUNUCU ID",
+  "prefix": "PREFIX"
 }

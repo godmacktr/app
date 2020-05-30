@@ -3,18 +3,17 @@ const app = express();
 const http = require("http");
 app.get("/", (request, response) => {
   console.log(
-    `Az Önce Bot Ping yedi, Sorun önemli değil merak etme. Hatayı düzelttik.`
+    `Güncelleme Başarılı.`
   );
   response.sendStatus(200);
 });
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+}, 60000);
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const ayarlar = require("./ayarlar.json");
-const consts = require("./consts.json");
 const fs = require("fs");
 const moment = require("moment");
 moment.locale("tr")
@@ -119,70 +118,4 @@ client.on("error", e => {
 
 client.login(ayarlar.token);
 
-//--------------------------------KODLAMALAR-------------------------------\\
-
-
-//----------------------------------HOSGELDIN-----------------------------//
-client.on("guildMemberAdd", member => {
-  const ok_embed = {
-    thumbnail: {
-      url: member.user.avatarURL({dynamic:true})//user_image_url
-    },
-    image: {
-      url: "https://i.ibb.co/Jkx38NQ/charby.png"
-    },
-    description:
-      ":beginner:  " +
-      `${member}` +
-      " Seninle birlikte **" +
-      member.guild.memberCount +
-      "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :large_orange_diamond: Bu kullanıcı : **GÜVENLİ** \n\n :watch: Hesap kuruluş zamanı: **" +
-      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
-      "**",
-    timestamp: new Date()
-  };
-
-  const err_embed = {
-    thumbnail: {
-      url: member.user.avatarURL({dynamic:true}) //user_image_url
-    },
-    image: {
-      url: "https://i.ibb.co/Jkx38NQ/charby.png"
-    },
-    description:
-      ":beginner:  " +
-      `${member}` +
-      " Seninle birlikte **" +
-      member.guild.memberCount +
-      "** Kişiyiz \n\n :beginner: Kaydının yapılması için **ses kanallarına** girebilirsin. \n\n :x: Bu kullanıcı : **TEHLİKELİ** \n\n :watch: Hesap kuruluş zamanı: **" +
-      moment(member.user.createdAt).format("DD MMMM YYYY dddd") +
-      "**",
-    timestamp: new Date()
-  };
-  var karantina = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.karantina_role)
-  var kayıtsız = client.guilds.cache.get(ayarlar.server_id).roles.cache.get(consts.unregister_role)
-  var x = moment(member.user.createdAt)
-    .add(5, "days")
-    .fromNow();
-  x = x.replace("birkaç saniye önce", " ");
-
-  if (!x.includes("önce") || x.includes("sonra") || x == " ") {
-    setTimeout(async () => {
-      if (member.roles.cache.has(kayıtsız)) {
-        member.roles.remove(kayıtsız);
-      }
-    }, 500);
-    setTimeout(async () => {
-      await member.roles.add(karantina);
-    }, 500);
-    member.guild.channels.cache.get(consts.welcome_channel).send({embed: err_embed});
-  } else {
-    setTimeout(async () => {
-      if (!member.roles.cache.has(kayıtsız)) {
-        member.roles.add(kayıtsız);
-      }
-    }, 500);
-    member.guild.channels.cache.get(consts.welcome_channel).send({embed:ok_embed});
-  }
-});
-//----------------------------------HOSGELDIN-----------------------------//
+// KODLAMA \\

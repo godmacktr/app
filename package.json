@@ -2,12 +2,12 @@
   "//1": "Developed by Chârby",
   "//2": "Daha fazlası için glitch.com/@charby",
   "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
+  "name": "YnsEmreArpacii",
   "version": "0.0.1",
   "description": "Glitch Discord Botu.",
-  "main": "bot.js",
+  "main": "loz.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node loz.js"
   },
   "dependencies": {
     "discord.js": "^12.2.0",

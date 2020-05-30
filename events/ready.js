@@ -8,26 +8,10 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
   console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.users.cache.size + ` kullanıcıya hizmet veriliyor!`);  
-  //---------AKTİFLİK DURUMU İÇİN---------
-  // client.user.setStatus("dnd");
-  //idle = BOŞTA
-  //online = ÇEVRİMİÇİ
-  //dnd = RAHATSIZ ETMEYİN
-  //---------AKTİFLİK DURUMU İÇİN---------
-  
-  
-  //---------DURUM İÇİN---------
-  //client.user.setActivity(`Deneme`,{ type: 'LISTENING' });
-  //LISTENING = DİNLİYOR
-  //WATCHING = İZLİYOR
-  //PLAYING = OYNUYOR 
-  //---------DURUM İÇİN---------
-  
-  
-  //---------YAYIN İÇİN---------
-  client.user.setActivity("Xountex", {
+ 
+  // OYNUYOR KISMI - YAYINA UYARLI\\
+  client.user.setActivity("Loz 'Bey", {
   type: "STREAMING",
-  url: "https://www.twitch.tv/xountex"
+  url: "https://www.twitch.tv/ynsemrearpacii"
   });
-  //---------YAYIN İÇİN---------
 };
