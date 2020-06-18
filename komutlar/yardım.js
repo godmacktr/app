@@ -10,6 +10,7 @@ ${emoji} **GENEL KOMUTLAR** ${emoji}
 [+] -çekilişyap <- Çekiliş Yapar.
 [+] -temizle (sayı) <- Chati Siler.
 [+] -dmduyuru <- Dm Duyuru Atar.
+[+] -yapımcım <- Yapımcımı Gösterir.
 
 ${emoji} **Eğlence Komutları** ${emoji}
 [+] -wwegif        <- WWE Gif Atar.
@@ -17,6 +18,7 @@ ${emoji} **Eğlence Komutları** ${emoji}
 [+] -stresçarkı     <- Stres Çarkı Çevirir.
 [+] -espri          <- Espri Yapar. 
 [+] -avatar         <- Avatarını Gösterir.
+[+] -kraol          <- Kral Olursun. 
 `,true);
   
   message.channel.send(yardım);
