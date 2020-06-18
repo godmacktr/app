@@ -118,4 +118,9 @@ client.on("error", e => {
 
 client.login(ayarlar.token);
 
-// KODLAMA \\
+client.on('message', async msg => {
+  if (msg.content.toLowerCase() === 'sa') {
+    await msg.react('🇦');
+    await msg.react('🇸');
+  }
+});
