@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, msg) => {
-  msg.channel.send("Merhaba Dünya! Ben Loz 'Bey")
+  msg.channel.send("Selam ben Forza V12")
 };
 exports.conf = {
   enabled: true,

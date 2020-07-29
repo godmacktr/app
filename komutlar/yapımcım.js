@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 
 exports.run = async (client, msg) => {
-  msg.channel.send("Yapımcım: @! ५𝓜𝓲𝓻 𝓐𝓵𝓲#1881")
+  msg.channel.send("Yapımcım: @! ५𝓜𝓲𝓻 𝓐𝓵𝓲#1881 ")
 };
 exports.conf = {
   enabled: true,
