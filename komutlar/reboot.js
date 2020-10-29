@@ -5,11 +5,12 @@ const ayarlar = require("../ayarlar.json");
 module.exports.run = async (bot, message, args) => {
   if (message.author.id !== ayarlar.sahip)
     return message.channel.send(
-      "❌ Bu Komutu Sadece Yapımcılar Kullana Bilir!"
+      "Bu Komutu Kullanamazsın"
     );
 
-  message.channel.send(`Bot Yeniden Başlatıldı`);
+  message.channel.send(`Bot Yeniden Başlatılıdı`);
   message.delete(60).then(msg => {
+
     process.exit(0);
   });
 };
