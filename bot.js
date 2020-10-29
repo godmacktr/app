@@ -1,3 +1,11 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const ayarlar = require("./ayarlar.json");
+const fs = require("fs");
+const moment = require("moment");
+moment.locale("tr")
+const chalk = require("chalk");
+require("./util/eventLoader")(client);
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -11,15 +19,6 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 60000);
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const ayarlar = require("./ayarlar.json");
-const fs = require("fs");
-const moment = require("moment");
-moment.locale("tr")
-const chalk = require("chalk");
-require("./util/eventLoader")(client);
-
 var prefix = ayarlar.prefix;
 
 const log = message => {
@@ -87,15 +86,13 @@ client.unload = command => {
       });
       resolve();
     } catch (e) {
-      reject(e);
-    }
+      reject(e);}
   });
 };
 
 client.elevation = message => {
   if (!message.guild) {
-    return;
-  }
+    return;}
   let permlvl = 0;
   if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
   if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
@@ -104,9 +101,6 @@ client.elevation = message => {
 };
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-// client.on('debug', e => {
-//   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
-// });
 
 client.on("warn", e => {
   console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
@@ -119,8 +113,7 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 client.on('message', async msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-    await msg.react('🇦');
-    await msg.react('🇸');
+  if (msg.content.toLowerCase() === 'link') {
+    msg.channel.send("discord.gg/codes")
   }
 });
