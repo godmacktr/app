@@ -1,28 +1,20 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client();//discord.gg/codes
+const client = new Discord.Client();//discord.gg/codes
 const ayarlar = require("../ayarlar.json");
 
-module.exports.run = async (bot, message, args) => {
-  if (message.author.id !== ayarlar.sahip)
-    return message.channel.send(
-      "Bu Komutu Kullanamazsın"
-    );
-
-  message.channel.send(`Bot Yeniden Başlatılıdı`);
-  message.delete(60).then(msg => {
-
-    process.exit(0);
-  });
-};
+module.exports.run = async (client, message, args) => {
+  
+   message.channel.send("discord.gg/codes");
+}
 module.exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["r", "reboot", "yenile", "yenidenbaşlat"],
+  aliases: [],
   permLevel: 0
 };
 
 module.exports.help = {
-  name: "reboot",
+  name: "link",
   description: "",
-  usage: "reboot"
+  usage: ""
 };
