@@ -1,9 +1,9 @@
 {
   "//1": "Discord Code Share v12 Boş Altyapı",
   "//2": "DEVELOPED BY Erdem!#0012",
-  "name": "discord.gg/codes",
+  "name": "codes",
   "version": "0.0.1",
-  "description": "Glitch Discord Botu.",
+  "description": "Glitch Discord Botu",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"

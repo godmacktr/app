@@ -11,7 +11,7 @@ const app = express();
 const http = require("http");
 app.get("/", (request, response) => {
   console.log(
-    `Güncelleme Başarılı.`
+    `Uptime Başarılı`
   );
   response.sendStatus(200);
 });

@@ -27,7 +27,7 @@ _..:: BILGILER::.._
 **NOT 5: Komutlar Klasörüne Dosya Eklemek için komutlar/komut-ismi.js Şeklinde Yükleme Yapınız! Örnek: komutlar/reboot.js**
 
 
-## Bu Altyapı Discord.js V11 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
+## Bu Altyapı Discord.js V12 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
 
 _Discord Code Shâre Ekibi İyi Günler Diler!_
 
