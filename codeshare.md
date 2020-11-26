@@ -6,7 +6,8 @@
   <h1></h1>
 
 <h1>Bu Konuda Türkiyenin En İyisi Olma Yolunda!</h1>
-  
+  <h1></h1>
+  <a href="https://codeshare.xyz/uptime">Botunu 7/24 Aktif Tutmak İçin Tıkla!</a>
   
   
 _..:: BILGILER::.._

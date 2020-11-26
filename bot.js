@@ -92,4 +92,5 @@ client.on('message', async msg => {
 
 
 
-//BOTUNU 
+//BOTUNU 7/24 AKTIF ET
+//codeshare.xyz/uptime
