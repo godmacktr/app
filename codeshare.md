@@ -1,14 +1,9 @@
-<img src="https://cdn.discordapp.com/icons/676124992919830548/a_ba644043f3877e32377473243b4313c1.gif">
-
-<h1>Discord Code Shâre Boş Altyapı</h1>
+<h1>Code Share V12 Boş Altyapı</h1>
 
 <a href="https://discord.gg/Sf9XES6">
   Sunucuya Gelmek için Tıkla! </a>
   
   <h1></h1>
-  
-  <a href="https://umut-bayraktar.glitch.me">
-  Kurucu Hakkında Bilgi Almak için Tıkla! </a>
 
 <h1>Bu Konuda Türkiyenin En İyisi Olma Yolunda!</h1>
   
@@ -25,7 +20,6 @@ _..:: BILGILER::.._
 **NOT 4: Asla ve Asla Kim Olursa Olsun Projenizi Kimse ile Paylaşmayınız!**
 
 **NOT 5: Komutlar Klasörüne Dosya Eklemek için komutlar/komut-ismi.js Şeklinde Yükleme Yapınız! Örnek: komutlar/reboot.js**
-
 
 ## Bu Altyapı Discord.js V12 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
 
