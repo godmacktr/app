@@ -1,19 +1,19 @@
 {
   "//1": "Discord Code Share v12 Boş Altyapı",
-  "//2": "DEVELOPED BY Erdem!#0012",
-  "name": "codes",
+  "//2": "Umut Bayraktar",
+  "name": "Code Share",
   "version": "0.0.1",
-  "description": "Glitch Discord Botu",
+  "description": "Discord.js V12 Uyarlamalı Boş Discord Bot Altyapısı!",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "^12.2.0",
+    "discord.js": "^12.5.0",
     "express": "^4.17.1",
     "fs": "^0.0.2",
-    "moment": "^2.24.0",
-    "chalk": "^4.0.0"
+    "chalk": "^4.1.0",
+    "croxydb": "^0.0.7"
   },
   "engines": {
     "node": "12.x"
