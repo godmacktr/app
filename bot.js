@@ -18,7 +18,6 @@ setInterval(() => {
 }, 60000);
 var prefix = ayarlar.prefix;
 
-
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
@@ -94,25 +93,15 @@ client.on("warn", e => {
 client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
-let cstoken
-if(ayarlar.TOKEN){
-  cstoken = ayarlar.TOKEN
+let cstoken;
+if (ayarlar.TOKEN) {
+  cstoken = ayarlar.TOKEN;
 }
-if(process.env){
-  cstoken = process.env.TOKEN
+if (process.env.TOKEN) {
+  cstoken = process.env.TOKEN;
 }
-try {
-client.login(ayarlar.TOKEN || process.env.TOKEN)
-} catch (e){
-  console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!")
+if (cstoken) {
+  client.login(ayarlar.TOKEN || process.env.TOKEN);
+} else {
+  console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!");
 }
-//Eğerki Projeniz Glitch de Var Olacak İse 
-//ayarlar.js Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazmayın!
-//Projenizdeki .env İsmindeki Dosyaya Şu Şekilde Tokeninizi Yazın
-//TOKEN=KENDİ BOT TOKENİNİ YAZ BURAYA
-//İyi Kullanımlar
-
-
-//BOTUNU 7/24 AKTIF ET
-//codeshare.xyz/uptime
-//Database CroxyDB Modülüdür!

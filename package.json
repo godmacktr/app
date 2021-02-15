@@ -8,7 +8,6 @@
     "fs": "^0.0.2",
     "chalk": "^4.1.0",
     "croxydb": "^0.0.7",
-    "moment": "^2.29.1",
     "discord.js": "^12.5.1"
   },
   "engines": {

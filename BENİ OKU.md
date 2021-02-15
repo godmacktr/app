@@ -9,8 +9,19 @@
   <h1></h1>
   <a href="https://codeshare.xyz/uptime">Botunu 7/24 Aktif Tutmak İçin Tıkla!</a>
   
-  
+  ****
 _..:: BILGILER::.._
+
+**Eğerki Projeniz Glitch de Var Olacak İse**
+
+**ayarlar.js Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazmayın!**
+
+**Projenizdeki .env İsmindeki Dosyaya Şu Şekilde Tokeninizi Yazın!**
+
+**TOKEN=KENDİ BOT TOKENİN**
+
+**DataBase CroxyDB Modülüdür!**
+****
 
 **NOT 1: ayarlar.json Dosyasını Kendinize Göre Doldurmadan Projeye Başlamayın!**
 
@@ -21,7 +32,7 @@ _..:: BILGILER::.._
 **NOT 4: Asla ve Asla Kim Olursa Olsun Projenizi Kimse ile Paylaşmayınız!**
 
 **NOT 5: Komutlar Klasörüne Dosya Eklemek için komutlar/komut-ismi.js Şeklinde Yükleme Yapınız! Örnek: komutlar/reboot.js**
-
+****
 ## Bu Altyapı Discord.js V12 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
 
 _Discord Code Shâre Ekibi İyi Günler Diler!_
