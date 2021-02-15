@@ -1,4 +1,4 @@
-const ayarlar = require("../ayarlar.json");
+const ayarlar = require("../ayarlar.js");
 const Discord = require("discord.js");
 module.exports = async message => {
   let client = message.client;

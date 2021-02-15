@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const ayarlar = require("./ayarlar.json");
+const ayarlar = require("./ayarlar.js");
 const fs = require("fs");
 const db = require("croxydb");
 const chalk = require("chalk");
@@ -94,14 +94,22 @@ client.on("warn", e => {
 client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
-
-client.login(ayarlar.token);
-
+let cstoken
+if(ayarlar.TOKEN){
+  cstoken = ayarlar.TOKEN
+}
+if(process.env){
+  cstoken = process.env.TOKEN
+}
+try {
+client.login(ayarlar.TOKEN || process.env.TOKEN)
+} catch (e){
+  console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!")
+}
 //Eğerki Projeniz Glitch de Var Olacak İse 
-//ayarlar.json Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazmayın!
+//ayarlar.js Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazmayın!
 //Projenizdeki .env İsmindeki Dosyaya Şu Şekilde Tokeninizi Yazın
 //TOKEN=KENDİ BOT TOKENİNİ YAZ BURAYA
-//ve Üstteki 100. Satırdaki ayarlar.token Yazısını process.env.TOKEN Yapın!
 //İyi Kullanımlar
 
 
