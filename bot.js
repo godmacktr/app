@@ -5,6 +5,14 @@ const fs = require("fs");
 const db = require("croxydb");
 const chalk = require("chalk");
 require("./util/eventLoader")(client);
+
+
+
+
+
+
+
+
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -16,8 +24,19 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 60000);
-var prefix = ayarlar.prefix;
 
+
+
+
+
+
+
+
+
+
+
+
+var prefix = ayarlar.prefix;
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
@@ -105,3 +124,5 @@ if (cstoken) {
 } else {
   console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!");
 }
+
+client.ayarlar = ayarlar
