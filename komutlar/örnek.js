@@ -1,14 +1,19 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
-const ayarlar = require("../ayarlar.js");
 
 exports.run = async (client, message, args) => {
-  message.channel.send("https://discord.gg/6XGqdgE");
+ const csg = client.guilds.fetch()
+ const csm = client.users.fetch()
+  
+ client.users.cache.map(cs => {
+   
+   
+   
+ })
 };
 exports.conf = {
   aliases: []
 };
 
 exports.help = {
-  name: "link"
+  name: "dm"
 };
