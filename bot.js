@@ -103,15 +103,6 @@ client.unload = command => {
   });
 };
 
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-
-client.on("warn", e => {
-  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
-});
-
-client.on("error", e => {
-  console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
-});
 let cstoken;
 if (ayarlar.TOKEN) {
   cstoken = ayarlar.TOKEN;
@@ -120,7 +111,7 @@ if (process.env.TOKEN) {
   cstoken = process.env.TOKEN;
 }
 if (cstoken) {
-  client.login(ayarlar.TOKEN || process.env.TOKEN);
+  client.login(cstoken);
 } else {
   console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!");
 }
