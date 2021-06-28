@@ -6,36 +6,6 @@ const db = require("croxydb");
 const chalk = require("chalk");
 require("./util/eventLoader")(client);
 
-
-
-
-
-
-
-
-const express = require("express");
-const app = express();
-const http = require("http");
-app.get("/", (request, response) => {
-  console.log(`Uptime Başarılı`);
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 60000);
-
-
-
-
-
-
-
-
-
-
-
-
 var prefix = ayarlar.prefix;
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
@@ -117,3 +87,20 @@ if (cstoken) {
 }
 
 client.ayarlar = ayarlar
+
+  
+//Projenizi Bir Sanal Sunucu(VDS) veya Kendi Bilgisayarınıza Kuracak İseniz Bu Kısmı Silin!
+const express = require("express");
+const app = express();
+const http = require("http");
+app.get("/", (request, response) => {
+  console.log(`Uptime Başarılı`);
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 60000);
+//Projenizi Bir Sanal Sunucu(VDS) veya Kendi Bilgisayarınıza Kuracak İseniz Bu Kısmı Silin!
+  
+
