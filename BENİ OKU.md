@@ -1,4 +1,4 @@
-<h1>Code Share V12 Boş Altyapı</h1>
+<h1>Code Share V13 Boş Altyapı</h1>
 
 <a href="https://discord.gg/Sf9XES6">
   Sunucuya Gelmek için Tıkla! </a>
@@ -33,8 +33,8 @@ _..:: BILGILER::.._
 
 **NOT 5: Komutlar Klasörüne Dosya Eklemek için komutlar/komut-ismi.js Şeklinde Yükleme Yapınız! Örnek: komutlar/reboot.js**
 ****
-## Bu Altyapı Discord.js V12 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
+## Bu Altyapı Discord.js V13 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
 
-_Discord Code Shâre Ekibi İyi Günler Diler!_
+_ Code Share Ekibi İyi Günler Diler!_
 
 _Umut Bayraktar_

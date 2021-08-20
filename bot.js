@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const { Client, Intents } = require('discord.js');
+const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS] });
+
 const ayarlar = require("./ayarlar.js");
 const fs = require("fs");
 const db = require("croxydb");
@@ -73,6 +75,10 @@ client.unload = command => {
   });
 };
 
+client.on('interactionCreate', interaction => {
+	console.log(interaction);
+});
+
 let cstoken;
 if (ayarlar.TOKEN) {
   cstoken = ayarlar.TOKEN;
@@ -82,6 +88,10 @@ if (process.env.TOKEN) {
 }
 if (cstoken) {
   client.login(cstoken);
+  
+  client.on("ready", async () => {
+  console.log("Bot "+client.user.username+" İsmi ile Giriş Yaptı!")
+  })
 } else {
   console.log("Projeye Hiç Bir Bot Tokeni Yazılmamış!");
 }
