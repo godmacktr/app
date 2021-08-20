@@ -1,15 +1,6 @@
-module.exports = {
-	name: 'ready',
-	once: true,
-	execute(client) {
-		const config = require("../ayarlar.js") 
-		client.application.commands.set([
-			{
-				name: 'ping',
-				description: "Botun Ping Komutu"
-			}
-		])
-		
-		console.log(`${client.user.tag} olarak giriş yapıldı.`);
-	},
-};
+const client = require("../index");
+
+client.on("ready", () => {
+    console.log(`${client.user.tag} İsmi İle Bot Aktif!`.bgRed)
+    client.user.setActivity(`Umut Bayraktar ♥ Code Share`)
+});

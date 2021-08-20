@@ -1,14 +1,17 @@
 {
-  "main": "bot.js",
+  "name": "djsv13",
+  "version": "3.0.0",
+  "description": "A Advance Discord.js Handler",
+  "main": "index.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "fs": "^0.0.2",
-    "chalk": "^4.1.2",
-    "croxydb": "^0.0.7",
-    "discord.js": "^13.1.0"
+    "ascii-table": "0.0.9",
+    "discord.js": "^13.0.0"
   },
   "engines": {
     "node": "16.x"
