@@ -16,6 +16,8 @@ _..::BILGILER::.._
 
 **"token": "KENDİ BOT TOKENİN"**
 
+**Glitch Kullananlar .env Dosyasına Tokenini Yazsın config.json Dosyasına Değil!**
+
 ****
 
 **NOT 1: config.json Dosyasını Kendinize Göre Doldurmadan Projeye Başlamayın!**

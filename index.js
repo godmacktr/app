@@ -19,7 +19,7 @@ module.exports = client;
 const config = require("./config.json");
 
 const prefix = config.prefix;
-const token = config.token;
+const token = process.env.TOKEN
 
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -32,4 +32,8 @@ client.categories = fs.readdirSync("./commands/");
   require(`./handler/${handler}`)(client);
 });
 
+if(!token){
+  console.log("Bu Proje Glitch Özel Uyarlanmıştır .env Dosyasına Discord Bot Tokeninizi Yazınız!")
+} else { 
 client.login(token); 
+}
