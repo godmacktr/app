@@ -1,21 +1,20 @@
-const ayarlar = require("../ayarlar.js");
-const Discord = require("discord.js");
-module.exports = async message => {
-  let client = message.client;
-  if (message.author.bot) return;
+module.exports = {
+	name: 'messageCreate',
+	execute(message, client) {
+        const config = require("../ayarlar.js")
+        const prefix = config.prefix;
+        if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-  let prefix = ayarlar.prefix;
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+        const command = args.shift().toLowerCase();
 
-  if (!message.content.startsWith(prefix)) return;
-  let command = message.content.split(" ")[0].slice(prefix.length);
-  let params = message.content.split(" ").slice(1);
-  let cmd;
-  if (client.commands.has(command)) {
-    cmd = client.commands.get(command);
-  } else if (client.aliases.has(command)) {
-    cmd = client.commands.get(client.aliases.get(command));
-  }
-  if (cmd) {
-    cmd.run(client, message, params);
-  }
+        if (!client.commands.has(command)) return;
+
+        try {
+            client.commands.get(command).execute(message, args);
+        } catch (error) {
+            console.error(error);
+            message.reply('Komuta Ulaşılamadı!');
+        }
+	},
 };

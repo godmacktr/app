@@ -1,83 +1,29 @@
-const Discord = require("discord.js");
-const { Client, Intents } = require('discord.js');
-const client = new Discord.Client({ intents: [Intents.FLAGS.GUILDS] });
+const { Client, Intents, Collection } = require('discord.js');
+const Discord = require("discord.js")
+const fs = require('fs')
+const ayarlar = require("./ayarlar.js")
+const db = require("croxydb")
 
-const ayarlar = require("./ayarlar.js");
-const fs = require("fs");
-const db = require("croxydb");
-const chalk = require("chalk");
-require("./util/eventLoader")(client);
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });// intentler detayları djs guide adresinde daha iyi bulursunuz.
+client.commands = new Collection();
 
-var prefix = ayarlar.prefix;
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-fs.readdir("./komutlar/", (err, files) => {
-  if (err) console.error(err);
-  console.log(`Toplamda ${files.length} Komut Var!`);
-  files.forEach(f => {
-    let props = require(`./komutlar/${f}`);
-    console.log(`${props.help.name} İsimli Komut Aktif!`);
-    client.commands.set(props.help.name, props);
-    props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, props.help.name);
-    });
-  });
-});
+const commandFiles = fs.readdirSync('./komutlar').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
-client.reload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
+for (const file of commandFiles) {
+	const command = require(`./komutlar/${file}`);
+	client.commands.set(command.name, command);
+}
 
-client.load = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args, client));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args, client));
+	}
+}
 
-client.unload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
-};
-
-client.on('interactionCreate', interaction => {
-	console.log(interaction);
-});
 
 let cstoken;
 if (ayarlar.TOKEN) {
@@ -113,4 +59,6 @@ setInterval(() => {
 }, 60000);
 //Projenizi Bir Sanal Sunucu(VDS) veya Kendi Bilgisayarınıza Kuracak İseniz Bu Kısmı Silin!
   
+
+
 
