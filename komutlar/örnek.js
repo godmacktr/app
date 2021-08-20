@@ -1,14 +1,13 @@
-const Discord = require("discord.js");
-exports.run = async (client, message, args) => {
+const { MessageActionRow, MessageButton } = require("discord.js");
+module.exports = {
+	name: 'test',
+	description: 'test',
+	execute(message, args) {
+		const button = new MessageButton()
+			.setCustomID('sj')
+			.setLabel('bas butona')
+			.setStyle('PRIMARY');
   
-  
-message.channel.send("https://discord.gg/6XGqdgE")
-};
-
-exports.conf = {
-  aliases: []
-};
-
-exports.help = {
-  name: "link"
+      message.reply({ content: 'test',components: [[button]]});
+	},
 };

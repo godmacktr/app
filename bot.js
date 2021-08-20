@@ -1,11 +1,11 @@
-const { Client, Intents, Collection } = require('discord.js');
+const { Client, Intents } = require('discord.js');
 const Discord = require("discord.js")
 const fs = require('fs')
 const ayarlar = require("./ayarlar.js")
 const db = require("croxydb")
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });// intentler detayları djs guide adresinde daha iyi bulursunuz.
-client.commands = new Collection();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./komutlar').filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
