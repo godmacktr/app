@@ -7,13 +7,14 @@ module.exports = {
     cooldown : 4, //1 = 1 Saniye
  
     run: async(client, message, args) => {
+      
         try {
             let ping = new MessageEmbed()
             .setDescription(`🏓 Ping : ${client.ws.ping}`)
-
             message.channel.send({embeds : [ping]})
         } catch (e) {
                 console.log(e);
         }
     }
+  
 }

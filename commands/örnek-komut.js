@@ -1,22 +1,22 @@
+
 const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'örnek',
-    description: 'Örnek Komut Taslağı!',
+    name: 'test',
+    description: 'Örnek Bot Komutu!',
+    cooldown : 4, //1 = 1 Saniye
+ 
     run: async(client, message, args) => {
-
-
-        //KOMUT İÇERİĞİNİZ 
-
-        const embed = new MessageEmbed()
-          .setTitle("Komut Başlığı")
-          .setDescription("Örnek Komut Açıklaması!")
-          .setColor("BLUE")
-          .setFooter(`Kullanan ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }))
-          .setTimestamp()
-          return message.channel.send({embeds : [embed]});
       
-       //KOMUT İÇERİĞİNİZ
-
+        try {
+          
+            let test = new MessageEmbed()
+            .setTitle("Başlık")
+            .setDescription(`ÖRNEK AÇIKLAMA`)
+            message.channel.send({embeds : [test]})
+          
+        } catch (e) {
+        console.log(e);
+        }
     }
 }
