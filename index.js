@@ -2,8 +2,7 @@ const { Client, Message, MessageEmbed, Collection } = require("discord.js");
 const fs = require("fs");
 const config = require("./config.json");
 const prefix = config.prefix;
-const token = config.token;
-
+const token = process.env.TOKEN
 
 const client = new Client({
   messageCacheLifetime: 60,
@@ -90,6 +89,21 @@ client.unload = command => {
   });
 };
 
-
-
+if(!token){
+  console.log("Bu Proje Glitch Özel Uyarlanmıştır .env Dosyasına Discord Bot Tokeninizi Yazınız!")
+} else { 
 client.login(token); 
+}
+
+
+const express = require("express");
+const app = express();
+const http = require("http");
+app.get("/", (request, response) => {
+  console.log(`Uptime Başarılı`);
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 60000);

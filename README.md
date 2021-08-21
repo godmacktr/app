@@ -12,9 +12,9 @@
   ****
 _..::BILGILER::.._
 
-**config.json Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
+**.env Dosyasındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
 
-**"token": "KENDİ BOT TOKENİN"**
+**TOKEN=KENDİ BOT TOKENİN**
 
 ****
 
@@ -32,3 +32,4 @@ _..::BILGILER::.._
 ## Bu Altyapı Discord.js V13 Sürümüne Göre Türkçe Sistemle Kodlanmıştır!
 
 ***Code Share for. Umut Bayraktar***
+
