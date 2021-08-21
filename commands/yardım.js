@@ -17,12 +17,12 @@ module.exports = {
         let categories = [];
   
         readdirSync("./commands/").forEach((dir) => {
-          const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
+          const commands = readdirSync(`./commands/`).filter((file) =>
             file.endsWith(".js")
           );
   
           const cmds = commands.map((command) => {
-            let file = require(`../../commands/${dir}/${command}`);
+            let file = require(`../../commands/${command}`);
             if (!file.name) return "Komut İsmi Yok!";
             let name = file.name.replace(".js", "");
             return `\`${name}\``;

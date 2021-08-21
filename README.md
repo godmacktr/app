@@ -12,11 +12,9 @@
   ****
 _..::BILGILER::.._
 
-**config.json Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
+**.env Dosyasındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
 
-**"token": "KENDİ BOT TOKENİN"**
-
-**Glitch Kullananlar .env Dosyasına Tokenini Yazsın config.json Dosyasına Değil!**
+**TOKEN=KENDİ BOT TOKENİN**
 
 ****
 

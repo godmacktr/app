@@ -12,7 +12,9 @@
   "dependencies": {
     "ascii-table": "0.0.9",
     "discord.js": "^13.1.0",
-    "glob": "^7.1.7"
+    "glob": "^7.1.7",
+    "express": "^4.17.1",
+    "http": "^0.0.0"
   },
   "engines": {
     "node": "16.x"
