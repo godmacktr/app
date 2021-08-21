@@ -12,9 +12,9 @@
   ****
 _..::BILGILER::.._
 
-**.env Dosyasındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
+**config.json Kısmındaki TOKEN Kısmına Bot Tokeninizi Yazın!**
 
-**TOKEN=KENDİ BOT TOKENİN**
+**"token": "KENDİ BOT TOKENİN"**
 
 ****
 
