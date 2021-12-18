@@ -41,8 +41,11 @@ fs.readdir("./komutlar/", (err, files) => {
 if(!token){
   console.log("Bu Proje Glitch Özel Uyarlanmıştır .env Dosyasına Discord Bot Tokeninizi Yazınız!")
 } else { 
-client.login(token); 
+client.login(token).catch(e => {
+  console.log("Projeye Yazılan Token Hatalı veya Discord Botunuzun Intentleri Kapalı!")
+})
 }
+
 
 
 const express = require("express");

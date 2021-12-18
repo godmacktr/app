@@ -6,13 +6,11 @@
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Umut Bayraktar",
   "dependencies": {
-    "discord.js": "^13.1.0",
+    "discord.js": "^13.3.1",
     "fs": "^0.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.2"
   },
   "engines": {
     "node": "16.x"
