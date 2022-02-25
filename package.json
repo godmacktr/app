@@ -8,9 +8,9 @@
   },
   "author": "Umut Bayraktar",
   "dependencies": {
-    "discord.js": "^13.3.1",
+    "discord.js": "^13.6.0",
     "fs": "^0.0.2",
-    "express": "^4.17.2"
+    "express": "^4.17.3"
   },
   "engines": {
     "node": "16.x"
