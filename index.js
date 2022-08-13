@@ -29,13 +29,13 @@ require("./events/ready.js");
 client.on("guildMemberAdd", member => {
   const kanal = db.get(`gckanal_${member.guild.id}`)
   if(!kanal) return;
-  member.guild.channels.cache.get(1007626918302060598).send({content: `:inbox_tray: | ${member} sunucuya katıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
+  member.guild.channels.cache.get("1007626918302060598").send({content: `:inbox_tray: | ${member} sunucuya katıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
 })
 
 client.on("guildMemberRemove", member => {
   const kanal = db.get(`gckanal_${member.guild.id}`)
   if(!kanal) return;
-  member.guild.channels.cache.get(1007626918302060598).send({content: `:outbox_tray: | ${member} sunucudan ayrıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
+  member.guild.channels.cache.get("1007626918302060598").send({content: `:outbox_tray: | ${member} sunucudan ayrıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
 })
 
 client.commands = new Collection();
