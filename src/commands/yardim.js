@@ -11,27 +11,23 @@ module.exports = {
 
         {
 
-          title: `Covid-19 | Yardım`,
+          title: `Asura | Yardım`,
           color: 0xFFD700,
           fields: [
 
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Hava Durumu", value: "Yazdığınız bölgenin hava durumunu verir.", inline: true },
 
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Hgayarla", value: "Hosgeldin kanalını ayarlar.", inline: true },
 
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Ping", value: "Botun pingi hakkında bilgi verir.", inline: true },
             
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Yardım", value: "Bottaki komutları gösterir.", inline: true },
             
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Zar-at", value: "1-6 arası zar atar.", inline: true },
              
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
-              
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
+            { name: "Yapımcı", value: "Botun yapımcısı söyler.", inline: true },
                
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
-                
-          
+                 
 
           ]
         }

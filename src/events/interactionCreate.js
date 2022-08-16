@@ -13,7 +13,7 @@ const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith(
 	for (const file of commandFiles) {
         const command = require(`../../src/commands/${file}`);
         if(interaction.commandName.toLowerCase() === command.data.name.toLowerCase()) {
-        command.run(client, interaction)
+        command.run(client, interaction,)
     }
 	}
   }}
