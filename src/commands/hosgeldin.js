@@ -1,9 +1,10 @@
 const Discord = require('discord.js')
 const db = require('orio.db')
-const { SlashCommandBuilder } = require("@discordjs/builders"); module.exports = {
+const { SlashCommandBuilder } = require("@discordjs/builders"); 
+module.exports = {
  data: new SlashCommandBuilder()
-.setname("")
-.setdescription(""),
+.setname("hosgeldin")
+.setdescription("Hosgeldin Kanalını ayarlar"),
 run: async (client, message ,args) => {
 
 if(!message.member.hasPermission("ManageGuild")) return message.reply("YETERSİZ YETKİ! YETKİN YOK")
