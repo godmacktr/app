@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders"); 
 module.exports = {
  data: new SlashCommandBuilder()
-    .setname("yardım")
+    .setName("yardım")
     .setDescription("Botun Yardım Menüsü"),
 	run: async (client, interaction) => { 
 	    interaction.reply({
