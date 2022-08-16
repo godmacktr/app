@@ -11,7 +11,8 @@
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
     "discord-api-types": "^0.37.1",
-    "mongoose": "^6.5.1"
+    "mongoose": "^6.5.1",
+    "@discordjs/builders": "^1.1.0"
   },
   "engines": {
     "node": "16.x"

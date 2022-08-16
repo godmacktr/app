@@ -1,5 +1,7 @@
 const { EmbedBuilder, Colors, PermissionsBitField } = require("discord.js");
-const { SlashCommandBuilder } = require("@discordjs/builders"); module.exports = {
+const { SlashCommandBuilder } = require("@discordjs/builders"); 
+
+module.exports = {
  data: new SlashCommandBuilder()
  .setName("zar-at")
  .setDescription("Zar atarsınız"),
