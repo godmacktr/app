@@ -1,12 +1,10 @@
 const Discord = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders"); 
-
 module.exports = {
-    slash: true,
-    setname: ('yardım'),  
-    description: 'Botun Yardım Menüsü', 
-    option: [],
-	async execute(client, interaction) {
+ data: new SlashCommandBuilder()
+    .setname("yardım")
+    .setDescription("Botun Yardım Menüsü"),
+	run: async (client, interaction) => { 
 	    interaction.reply({
 
       embeds: [
@@ -33,10 +31,6 @@ module.exports = {
                
             { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
                 
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
-                 
-            { name: "Komut İsmi", value: "Komut Açıklama", inline: true },
-             
           
 
           ]
