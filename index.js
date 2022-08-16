@@ -1,4 +1,4 @@
-const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
+const { Client, Collection, GatewayIntentBits, Partials, EmbedBuilder } = require("discord.js");
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.MessageContent], shards: "auto", partials: [Partials.Message, Partials.Channel, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.User, Partials.ThreadMember]});
 const { prefix, owner, token } = require("./config.js");
 const { readdirSync } = require("fs")
@@ -21,6 +21,7 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
+
 client.on("ready", async () => {
         try {
             await rest.put(
@@ -32,6 +33,23 @@ client.on("ready", async () => {
         }
     log(`${client.user.username} Aktif Edildi!`);
 })
+
+client.on("guildMemberAdd", (member) => {
+ try {
+const exampleEmbed = new EmbedBuilder()
+	.setColor('2F3136')
+	.setTitle(`Crex'e Hoş Geldiniz!`)
+	.setDescription(`Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
+  .setThumbnail(member.user.avatarURL({ dynamic: true }))
+	.setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
+
+  member.guild.channels.cache
+      .get("911590826931535933")
+      .send({ embeds: [exampleEmbed] });
+} catch(error) {
+  console.log("error =>", error);
+}
+});
 
 //event-handler
 const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
@@ -46,4 +64,4 @@ for (const file of eventFiles) {
 }
 //
 
-client.login(token)
+client.login(process.env.token)
