@@ -1,78 +1,49 @@
-const { Client, Message, MessageEmbed, Collection } = require("discord.js");
-const fs = require("fs");
-const config = require("./config.json");
-const prefix = config.prefix;
-const token = process.env.TOKEN;
-const { QuickDB } = require("quick.db");
-const db = new QuickDB();
+const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.MessageContent], shards: "auto", partials: [Partials.Message, Partials.Channel, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.User, Partials.ThreadMember]});
+const { prefix, owner, token } = require("./config.js");
+const { readdirSync } = require("fs")
+const moment = require("moment");
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v10');
 
+client.commands = new Collection()
 
-const client = new Client({
-  messageCacheLifetime: 60,
-  fetchAllMembers: false,
-  messageCacheMaxSize: 10,
-  restTimeOffset: 0,
-  restWsBridgetimeout: 100,
-  shards: "auto",
-  allowedMentions: {
-    parse: ["roles", "users", "everyone"],
-    repliedUser: true,
-  },
-  partials: ["MESSAGE", "CHANNEL", "REACTION"],
-  intents: 32767,
-});
-module.exports = client;
+const rest = new REST({ version: '10' }).setToken(token);
 
-require("./events/message.js");
-require("./events/ready.js");
+const log = l => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${l}`) };
 
-client.on("guildMemberAdd", member => {
-  const kanal = db.get(`gckanal_${member.guild.id}`)
-  if(!kanal) return;
-  member.guild.channels.cache.get("1007626918302060598").send({content: `:inbox_tray: | ${member} sunucuya katıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
-})
-
-client.on("guildMemberRemove", member => {
-  const kanal = db.get(`gckanal_${member.guild.id}`)
-  if(!kanal) return;
-  member.guild.channels.cache.get("1007626918302060598").send({content: `:outbox_tray: | ${member} sunucudan ayrıldı! Sunucumuz **${member.guild.memberCount}** kişi oldu.`})
-})
-
-client.commands = new Collection();
-client.aliases = new Collection();
-fs.readdir("./komutlar/", (err, files) => {
-  if (err) console.error(err);
-  console.log(`Toplamda ${files.length} Komut Var!`);
-  files.forEach((f) => {
-    let props = require(`./komutlar/${f}`);
-    console.log(`${props.help.name} İsimli Komut Aktif!`);
-    client.commands.set(props.help.name, props);
-    props.conf.aliases.forEach((alias) => {
-      client.aliases.set(alias, props.help.name);
-    });
-  });
-});
-
-if (!token) {
-  console.log(
-    "Bu Proje Glitch Özel Uyarlanmıştır .env Dosyasına Discord Bot Tokeninizi Yazınız!"
-  );
-} else {
-  client.login(token).catch((e) => {
-    console.log(
-      "Projeye Yazılan Token Hatalı veya Discord Botunuzun Intentleri Kapalı!"
-    );
-  });
+//command-handler
+const commands = [];
+const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+	const command = require(`./src/commands/${file}`);
+  commands.push(command.data.toJSON());
+  client.commands.set(command.data.name, command);
 }
 
-const express = require("express");
-const app = express();
-const http = require("http");
-app.get("/", (request, response) => {
-  console.log(`Uptime Başarılı`);
-  response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 60000);
+client.on("ready", async () => {
+        try {
+            await rest.put(
+                Routes.applicationCommands(client.user.id),
+                { body: commands },
+            );
+        } catch (error) {
+            console.error(error);
+        }
+    log(`${client.user.username} Aktif Edildi!`);
+})
+
+//event-handler
+const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./src/events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
+//
+
+client.login(token)
