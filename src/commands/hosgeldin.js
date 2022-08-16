@@ -8,7 +8,7 @@ module.exports = {
 .setDescription('Hosgeldin Kanalını ayarlar'),
 run: async (client, member ,args) => {
 
-if (member.permissions.has("ManageGuild")) return member.reply("YETERSİZ YETKİ! YETKİN YOK")
+if (member.permissions.has(0x0000000000000020)) return member.reply("YETERSİZ YETKİ! YETKİN YOK")
 
 if(!args[0]) return member.reply("**Hatalı Kullanım❌\nAyarlamak İçin: !hg log-ayarla #kanal\nSıfırlamak İçin: !hg-bb log-sıfırla**")
   let kanal = member.mentions.channels.first()
