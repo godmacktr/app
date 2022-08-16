@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders"); 
 
 module.exports = {
     slash: true,
-    name: ['yardım'],  
+    setname: ('yardım'),  
     description: 'Botun Yardım Menüsü', 
     option: [],
 	async execute(client, interaction) {
