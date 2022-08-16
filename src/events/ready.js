@@ -3,6 +3,7 @@ module.exports = {
 	name: 'ready',
 	once: true,
 	execute(client) {
-    let activities = [ `Somer Şef İfşa İzliyor`, `${client.user.username}` ], i = 0;
+    let activities = [ `Somer Şef İfşa`, `${client.user.username}` ], i = 0;
+    client.user.setStatus("idle");
     setInterval(() => client.user.setActivity({ name: `${activities[i++ % activities.length]}`, type: ActivityType.Watching }), 22000);
 }};
