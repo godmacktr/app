@@ -1,12 +1,15 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("ping")
-    .setDescription("Botun Pingi Hakkında bilgi verir."),
-    run: async (client, interaction) => {
-      interaction.reply(`\nBot Gecikmesi: \`${Date.now() - interaction.createdTimestamp}ms\`, API Gecikmesi: \`${Math.round(client.ws.ping)}ms\``)
+    .setName("Yapımcı")
+    .setDescription("Yapımcının kim olduğunu söyler"),
+   run: async(client, message, args) => { 
+     let id = "974007430872694834"
+     let sahip = client.users.cache.get(id)
+  message.channel.send(`Benim Yapımcım: ${sahip.tag}`)
       // komuta seçenekler eklemek istersen guide: https://discordjs.guide/interactions/slash-commands.html#options
-    }
- };
+  }
+};
+
