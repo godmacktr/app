@@ -14,21 +14,21 @@ module.exports = {
 .addSubcommand(subcommand =>
         subcommand
             .setName('aç')
-            .setDescription('sistemi açarsiniz'))
+            .setDescription('sistemi açarsiniz.'))
 .addSubcommand(subcommand =>
         subcommand
             .setName('kapat')
-            .setDescription('sistemi kapatirsiniz')),
+            .setDescription('sistemi kapatirsiniz.')),
 run: async(client, interaction) => {
   if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels))
     return interaction.reply(
-      "Bu komutu kullanabilmek için **Kanalları Yönet**yetkisine sahip olmalısın"
+      "<:no:1008431816929185792> Bu komutu kullanabilmek için **Kanalları Yönet** yetkisine sahip olmalısın."
     );
 let subcommand = interaction.options.getSubcommand()
     if(subcommand == "kanal") {
         var kanal = interaction.options.getChannel("channel")
         db.set(`hgkanal_${interaction.guild.id}`, kanal.id)
-interaction.reply("Log-Kanal Ayarlandı :like:")
+interaction.reply("Log-Kanal Ayarlandı <:like:1008293736075231312>")
 }
 
   if (subcommand === 'aç') {
