@@ -1,15 +1,14 @@
-const { ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js')
+const { ApplicationCommandType, ApplicationCommandOptionType, SlashCommandBuilder } = require('discord.js')
 const Discord = require('discord.js');
 const db =  require('inflames.db');
-const { SlashCommandBuilder } = require("@discordjs/builders"); 
 
 module.exports = {
  data: new SlashCommandBuilder()
-.setName('hgayarla')
+.setName('hgayar')
 .setDescription('Hosgeldin Kanalını ayarlar'),
 
-run: async(client, interaction, args) => {
-  if (!interaction.member.permissions.has("MANAGE_ApplicationCommandOptionType.ChannelS"))
+run: async(client, interaction) => {
+  if (interaction.member.permissions.has("MANAGE_ApplicationCommandOptionType.ChannelS"))
     return interaction.channel.send(
       "Bu komutu kullanabilmek için **Kanalları Yönet**yetkisine sahip olmalısın"
     );
@@ -33,4 +32,4 @@ run: async(client, interaction, args) => {
   }
  
 }
-}s
+}
