@@ -10,3 +10,24 @@ module.exports = {
       // komuta seçenekler eklemek istersen guide: https://discordjs.guide/interactions/slash-commands.html#options
     }
  };
+
+const Discord = require("discord.js");
+
+module.exports = {
+    slash: true,
+    name: ['ping'],  
+    description: 'Botun Pingini Görürsünüz.', 
+    option: [],
+	async execute(client, interaction) {
+	
+    interaction.reply({
+      embeds: [{
+        Color: 'Gold',
+      image: {
+	url: 'https://dummyimage.com/2000x500/33363c/ffffff&text='+ client.ws.ping +'%20MS',
+	},
+        
+      }]
+    })
+  },
+};
