@@ -3,13 +3,9 @@ module.exports = {
  data: new SlashCommandBuilder()
    .setName('sarıl')
    .setDescription  ('Sarılırsınız.'),
- .addStringOption(option =>
-		option.setName('input')
-			.setDescription('The input to echo back')
-			.setRequired(true));
-  let kisi = interaction.mentions.users.first() || client.users.cache.get(args[0]) 
-  if (!kisi) return interaction.reply("Kime Sarılacağım Yazman Gerek 😥");
 run: async(client, interaction, args) => {
+  let kisi = interaction.options.getMentionable('mentionable');
+  if (!kisi) return interaction.reply("Kime Sarılacağım Yazman Gerek 😥");
   if (kisi.id === interaction.author.id) return interaction.reply("Çok Üzgünüm ama Kendine Sarılamassın!");
  
     const cse = new EmbedBuilder()
