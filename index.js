@@ -6,6 +6,7 @@ const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const db = require("db")
 
 
 client.commands = new Collection()
@@ -35,22 +36,20 @@ client.on("ready", async () => {
     log(`${client.user.username} Aktif Edildi!`);
 })
 
-client.on("guildMemberAdd", (member) => {
- try {
-const exampleEmbed = new EmbedBuilder()
-	.setColor('2F3136')
-	.setTitle(`Crex'e Hoş Geldiniz!`)
-	.setDescription(`Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
-  .setThumbnail(member.user.avatarURL({ dynamic: true }))
-	.setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
-
-  member.guild.channels.cache
-      .get("911590826931535933")
-      .send({ embeds: [exampleEmbed] });
-} catch(error) {
-  console.log("error =>", error);
-}
-});
+client.on("guildMemberAdd", async member => {
+    let açıkmı = db.fetch({ message: `hgbb_${member.guild.id}`})
+    let kanal = db.fetch({ message: `hgbbkanal_${member.guild.id}`})
+    if(açıkmı === "açık") {
+        const cse = new EmbedBuilder()
+        .setColor('2F3136')
+	      .setTitle(`Crex'e Hoş Geldiniz!`)
+	      .setDescription(`Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
+        .setThumbnail(member.user.avatarURL({ dynamic: true }))
+	      .setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
+        client.channels.cache.get(kanal).send({ embeds: [cse] });
+    } else if(açıkmı === "kapalı") { return; }
+      }) 
+    
 
 //event-handler
 const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
