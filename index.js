@@ -6,7 +6,7 @@ const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const db = require("db")
+const db =  require('inflames.db');
 
 
 client.commands = new Collection()
@@ -36,16 +36,16 @@ client.on("ready", async () => {
     log(`${client.user.username} Aktif Edildi!`);
 })
 
-client.on("guildMemberAdd", async member => {
-    let açıkmı = db.fetch({ message: `hg_${member.guild.id}`})
-    let kanal = db.fetch({ message: `hgkanal_${member.guild.id}`})
+client.on("guildMemberAdd", async interaction  => {
+    let açıkmı = db.fetch({ message: `hg_${interaction .guild.id}`})
+    let kanal = db.fetch({ message: `hgkanal_${interaction .guild.id}`})
     if(açıkmı === "açık") {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
 	      .setTitle(`Crex'e Hoş Geldiniz!`)
-	      .setDescription(`Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
-        .setThumbnail(member.user.avatarURL({ dynamic: true }))
-	      .setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
+	      .setDescription(`Seni aramızda görmek ne güzel ${interaction }! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
+        .setThumbnail(interaction .user.avatarURL({ dynamic: true }))
+	      .setFooter({ text: `Guild Member Count: #${interaction .guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
         client.channels.cache.get(kanal).send({ embeds: [cse] });
     } else if(açıkmı === "kapalı") { return; }
       }) 

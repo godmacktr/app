@@ -20,13 +20,13 @@ module.exports = {
             .setName('kapat')
             .setDescription('sistemi kapatirsiniz')),
 run: async(client, interaction) => {
-  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels)))
+  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels))
     return interaction.reply(
-      "Bu komutu kullanabilmek için **Kanalları Yönet**yetkisine sahip olmalısın"
+      "Bu komutu kullanabilmek için **Kanalları Yönet** yetkisine sahip olmalısın."
     );
 let subcommand = interaction.options.getSubcommand()
     if(subcommand == "kanal") {
-        var kanal = interaction.options.getChannel("kanal")
+        var kanal = interaction.options.getChannel("channel")
         db.set(`hgkanal_${interaction.guild.id}`, kanal.id)
 }
 
