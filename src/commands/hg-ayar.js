@@ -1,33 +1,46 @@
-const { ApplicationCommandType, ApplicationCommandOptionType, SlashCommandBuilder } = require('discord.js')
-const Discord = require('discord.js');
+const { PermissionsBitField } = require('discord.js')
+const { SlashCommandBuilder} = require("@discordjs/builders")
 const db =  require('inflames.db');
 
 module.exports = {
  data: new SlashCommandBuilder()
-.setName('hgayar')
-.setDescription('Hosgeldin Kanalını ayarlar'),
-
+.setName('hgayarla')
+.setDescription('Hosgeldin Kanalını ayarlar')
+.addSubcommand(subcommand =>
+        subcommand
+            .setName('kanal')
+            .setDescription('kanal girin')
+            .addChannelOption(option => option.setName('channel').setDescription('kanal')))
+.addSubcommand(subcommand =>
+        subcommand
+            .setName('aç')
+            .setDescription('sistemi açarsiniz'))
+.addSubcommand(subcommand =>
+        subcommand
+            .setName('kapat')
+            .setDescription('sistemi kapatirsiniz')),
 run: async(client, interaction) => {
-  if (interaction.member.permissions.has("MANAGE_ApplicationCommandOptionType.ChannelS"))
-    return interaction.channel.send(
+  if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels)))
+    return interaction.reply(
       "Bu komutu kullanabilmek için **Kanalları Yönet**yetkisine sahip olmalısın"
     );
-    if(args[0] == "kanal") {
-        var kanal = interaction.mentions.channels.first() || interaction.guild.channels.cache.get(args[1]);
+let subcommand = interaction.options.getSubcommand()
+    if(subcommand == "kanal") {
+        var kanal = interaction.options.getChannel("kanal")
         db.set(`hgkanal_${interaction.guild.id}`, kanal.id)
 }
 
-  if (args[0] === 'aç') {
+  if (subcommand === 'aç') {
     
     db.set(`hg_${interaction.guild.id}`, 'açık')
-    interaction.channel.send({ content: `hgaçıldı.` })
+    interaction.reply({ content: `hgaçıldı.` })
  
   }
   
-  if (args[0] === 'kapat') {
+  if (subcommand === 'kapat') {
     
     db.set(`hg_${interaction.guild.id}`, 'kapalı')
-    interaction.channel.send({ content: ` hg kapatıldı.` })
+    interaction.reply({ content: ` hg kapatıldı.` })
 
   }
  

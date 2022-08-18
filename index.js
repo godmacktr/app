@@ -37,8 +37,8 @@ client.on("ready", async () => {
 })
 
 client.on("guildMemberAdd", async member => {
-    let açıkmı = db.fetch({ message: `hgbb_${member.guild.id}`})
-    let kanal = db.fetch({ message: `hgbbkanal_${member.guild.id}`})
+    let açıkmı = db.fetch({ message: `hg_${member.guild.id}`})
+    let kanal = db.fetch({ message: `hgkanal_${member.guild.id}`})
     if(açıkmı === "açık") {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
