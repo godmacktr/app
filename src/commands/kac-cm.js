@@ -5,7 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('kac-cm')
     .setDescription('Kac Cm Olduğunu Söyler'),
-  run: async (client, interaction, ) => {
+  run: async (client, interaction) => {
     interaction.channel
       .send('Hemen Diyorum Abi 1 Saniye..')
       .then((interaction2) => {
