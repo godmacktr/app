@@ -37,14 +37,14 @@ client.on("ready", async () => {
 })
 
 client.on("guildMemberAdd", async interaction  => {
-    let açıkmı = db.fetch({ message: `hg_${interaction .guild.id}`})
-    let kanal = db.fetch({ message: `hgkanal_${interaction .guild.id}`})
+    let açıkmı = db.fetch({ message: `hg_${interaction.guild.id}`})
+    let kanal = db.fetch({ message: `hgkanal_${interaction.guild.id}`})
     if(açıkmı === "açık") {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
 	      .setTitle(`Crex'e Hoş Geldiniz!`)
 	      .setDescription(`Seni aramızda görmek ne güzel ${interaction }! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
-        .setThumbnail(interaction .user.avatarURL({ dynamic: true }))
+        .setThumbnail(interaction.user.avatarURL({ dynamic: true }))
 	      .setFooter({ text: `Guild Member Count: #${interaction .guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
         client.channels.cache.get(kanal).send({ embeds: [cse] });
     } else if(açıkmı === "kapalı") { return; }

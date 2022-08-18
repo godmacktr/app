@@ -4,7 +4,7 @@ const db =  require('inflames.db');
 
 module.exports = {
  data: new SlashCommandBuilder()
-.setName('hgayarla')
+.setName('hglog-ayar')
 .setDescription('Hosgeldin Kanalını ayarlar')
 .addSubcommand(subcommand =>
         subcommand
@@ -33,14 +33,14 @@ let subcommand = interaction.options.getSubcommand()
   if (subcommand === 'aç') {
     
     db.set(`hg_${interaction.guild.id}`, 'açık')
-    interaction.reply({ content: `hgaçıldı.` })
+    interaction.reply({ content: `hg-log açıldı.` })
  
   }
   
   if (subcommand === 'kapat') {
     
     db.set(`hg_${interaction.guild.id}`, 'kapalı')
-    interaction.reply({ content: ` hg kapatıldı.` })
+    interaction.reply({ content: ` hg-log kapatıldı.` })
 
   }
  
