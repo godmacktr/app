@@ -10,7 +10,7 @@ data: new SlashCommandBuilder()
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
-let user = interaction.mentions.user.first(974007430872694834);
+let user = interaction.mentions.user.first();
 let rol = interaction.mentions.roles.first(1010506971176243242);
 if(!user) return interaction.reply("Lütfen Rolün Verileceği Kişiyi Belirtiniz.")
 if(!rol) return interaction.reply("Lütfen Verilecek Rolü Belirtiniz.")
