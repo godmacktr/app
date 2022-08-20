@@ -9,7 +9,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const db =  require('inflames.db');
 
 const clientId = '998288926043291718';
-const guildId = '876543210987654321';
+const guildId = '911587012371427368';
 
 
 client.commands = new Collection()

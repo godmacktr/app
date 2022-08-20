@@ -1,4 +1,4 @@
-const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
+const { Client, EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 
@@ -7,11 +7,13 @@ data: new SlashCommandBuilder()
 .setName("rol-ver")
 .setDescription("Belirlediğiniz kişiye rol verirsiniz")
   .addSubcommand(subcommand =>
+     subcommand
 			.setName('uye')
 			.setDescription('Kullanıcı'))
-      .addUserOption((option => 
+      .addUserOption((option) =>
       option.setName('kullanıcı')
-      .setDescription('kullanıcı1'))),
+      .setDescription('kullanıcı1')
+      .setRequired(true)),
     run: async(client, interaction, args) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(  
