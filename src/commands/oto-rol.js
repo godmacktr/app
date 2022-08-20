@@ -5,15 +5,12 @@ module.exports = {
  data: new SlashCommandBuilder()
     .setName('otorol-ayarla')
     .setDescription('Otorolü Ayarlarsınız.'), 
-    option: [
-       {
-            name:"rol",
-            description:"Ayarlanacak Rol",
-            type: Role,
-            required: true
-        }
-    ],
-     async execute(client, interaction) {
+run: async (client, interaction) => {
+  addRoleOption(option =>
+            option.setName("rol"),
+            .setDescription('Ayarlancak Rol')
+             .setRequired(true));
+        )
      
       const { guild, options } = interaction;  
       const role = options.getRole("rol");
