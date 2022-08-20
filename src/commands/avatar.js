@@ -11,7 +11,7 @@ data: new SlashCommandBuilder()
     .setDescription('kullanıcı')
         .addUserOption(option => option.setName('user').setDescription('kullanıcı'))),
   run: async(client,  interaction, message) => {
-    let user = interaction.author => interaction.user
+    let user = interaction.author || interaction.user
     const cse = new EmbedBuilder()
     .setDescription(`**[PNG](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "png")}) | [JPG](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "jpg")}) | [WEBP](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "webp")}) | [GIF](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "gif")})**`)
     .setImage(interaction.user.avatarURL({ dynamic: true, size: 1024 }))
