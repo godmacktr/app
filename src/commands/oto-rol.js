@@ -4,14 +4,12 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
  data: new SlashCommandBuilder()
     .setName('otorol-ayarla')
-    .setDescription('Otorolü Ayarlarsınız.'), 
-run: async (client, interaction) => {
-  addRoleOption(option =>
-            option.setName("rol"),
+    .setDescription('Otorolü Ayarlarsınız.')
+     .addRoleOption(option =>
+            option.setName("rol")
             .setDescription('Ayarlancak Rol')
-             .setRequired(true));
-        )
-     
+             .setRequired(true)),
+     run: async (client, interaction) => {
       const { guild, options } = interaction;  
       const role = options.getRole("rol");
 

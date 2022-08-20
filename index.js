@@ -50,6 +50,12 @@ client.on("guildMemberAdd", async member  => {
     } else if(açıkmı === "kapalı") { return; }
       }) 
     
+client.on("guildMemberAdd", (member) => {
+    if (db.has(`otorol_${member.guild.id}`)) {
+        member.roles.add(db.get(`otorol_${member.guild.id}`))
+          }
+          }) 
+
 
 //event-handler
 const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
