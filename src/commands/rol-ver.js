@@ -5,7 +5,12 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
 data: new SlashCommandBuilder()
 .setName("rol-ver")
-.setDescription("Belirlediğiniz kişiye rol verirsiniz"),
+.setDescription("Belirlediğiniz kişiye rol verirsiniz")
+  .addSubcommand(subcommand =>
+		subcommand
+			.setName('user')
+			.setDescription('Info about a user')
+			.addUserOption(option => option.setName('kullanıcı').setDescription('kullanıcı'))),
   
     run: async(client, interaction) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
