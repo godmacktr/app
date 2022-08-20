@@ -1,6 +1,7 @@
 const { Discord, Permission } = require("discord.js");
 const db =  require('inflames.db');
 const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
  data: new SlashCommandBuilder()
     .setName('otorol-ayarla')
