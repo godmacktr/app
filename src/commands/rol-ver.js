@@ -6,6 +6,7 @@ module.exports = {
 data: new SlashCommandBuilder()
 .setName("rol-ver")
 .setDescription("Belirlediğiniz kişiye rol verirsiniz"),
+  
     run: async(client, interaction) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(
