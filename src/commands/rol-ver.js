@@ -7,13 +7,14 @@ data: new SlashCommandBuilder()
 .setName("rol-ver")
 .setDescription("Belirlediğiniz kişiye rol verirsiniz")
   .addSubcommand(subcommand =>
-		subcommand
-			.setName('kullanıcı')
+			.setName('uye')
 			.setDescription('Kullanıcı'))
-      .addUserOption(option => option.setName('kullanıcı').setDescription('kullanıcı')),
-    run: async(client, interaction) => {
+      .addUserOption((option => 
+      option.setName('kullanıcı')
+      .setDescription('kullanıcı1'))),
+    run: async(client, interaction, args) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
-  return interaction.reply(
+  return interaction.reply(  
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
 let user = interaction.options.getUser();
 let rol = interaction.options.getRole(1010506971176243242);

@@ -8,6 +8,9 @@ const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db =  require('inflames.db');
 
+const clientId = '998288926043291718';
+const guildId = '876543210987654321';
+
 
 client.commands = new Collection()
 
@@ -27,7 +30,7 @@ for (const file of commandFiles) {
 client.on("ready", async () => {
         try {
             await rest.put(
-              Routes.applicationCommands(client.user.id),
+              Routes.applicationGuildCommands(clientId, guildId),
                 { body: commands }
             );
         } catch (error) {
