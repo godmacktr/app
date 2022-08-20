@@ -4,12 +4,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
 data: new SlashCommandBuilder() 
   .setName('avatar')
-  .setDescription('Kullanıcının Avatarına bakarsınız.')
-.addSubcommand(subcommand =>
-        subcommand
-        .setName('kullanıcı')
-    .setDescription('kullanıcı')
-        .addUserOption(option => option.setName('user').setDescription('kullanıcı'))),
+  .setDescription('Avatarınıza bakarsınız.'),
   run: async(client,  interaction, message) => {
     let user = interaction.user
     const cse = new EmbedBuilder()

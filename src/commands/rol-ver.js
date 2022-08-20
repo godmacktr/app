@@ -9,12 +9,12 @@ data: new SlashCommandBuilder()
   .addSubcommand(subcommand =>
      subcommand
 			.setName('uye')
-			.setDescription('Kullanıcı'))
+			.setDescription('Kullanıcı')
       .addUserOption((option) =>
       option.setName('kullanıcı')
       .setDescription('kullanıcı1')
-      .setRequired(true)),
-    run: async(client, interaction, args) => {
+      .setRequired(true))),
+    run: async(client, interaction) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(  
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
