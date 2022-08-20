@@ -8,20 +8,15 @@ data: new SlashCommandBuilder()
 .setDescription("Belirlediğiniz kişiye rol verirsiniz")
   .addSubcommand(subcommand =>
 		subcommand
-			.setName('rol')
-			.setDescription('rol')
-			.addUserOption(option => option.setName('target').setDescription('kullanıcı')))
-  .addSubcommand(subcommand =>
-		subcommand
-			.setName('server')
-			.setDescription('Info about the server'))
-      .addRoleOption(option => option.setName('role').setDescription('verilcek rol')),
+			.setName('kullanıcı')
+			.setDescription('Kullanıcı'))
+      .addUserOption(option => option.setName('kullanıcı').setDescription('kullanıcı')),
     run: async(client, interaction) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
 let user = interaction.options.getUser();
-let rol = interaction.options.getRole();
+let rol = interaction.options.getRole(1010506971176243242);
 if(!user) return interaction.reply("Lütfen Rolün Verileceği Kişiyi Belirtiniz.")
 if(!rol) return interaction.reply("Lütfen Verilecek Rolü Belirtiniz.")
 //norex
