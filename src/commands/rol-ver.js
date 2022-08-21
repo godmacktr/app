@@ -18,12 +18,12 @@ data: new SlashCommandBuilder()
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(  
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
-const user = interaction.options.getUser("user");
-const member = interaction.guild.members.cache.get(user.id) || await interaction.guild.members.fetch(user.id).catch(err => { });
-const rol = interaction.guild.roles.cache.get("1010506971176243242")
+let user = interaction.options.getUser('user');
+let member = interaction.guild.members.cache.get(user.id)
+let rol = interaction.guild.roles.cache.get("1010506971176243242")
+member.roles.add(rol)
 if(!user) return interaction.reply("Lütfen Rolün Verileceği Kişiyi Belirtiniz.")
 if(!rol) return interaction.reply("Lütfen Verilecek Rolü Belirtiniz.")
-
 const cse = new EmbedBuilder()
 .setColor("Gold")
 .setAuthor("Rol Verdin Sana Knk .D")
