@@ -4,26 +4,26 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
 data: new SlashCommandBuilder()
-.setName("rol-ver")
-.setDescription("Belirlediğiniz kişiye rol verirsiniz")
+.setName("ekip-uye")
+.setDescription("Ekip Rolü Verir")
   .addSubcommand(subcommand =>
      subcommand
-			.setName('uye')
-			.setDescription('Kullanıcı')
+			.setName('ekle')
+			.setDescription('Ekler')
       .addUserOption((option) =>
       option.setName('kullanıcı')
-      .setDescription('kullanıcı1')
+      .setDescription('eklemek istediğiniz kullanıcı')
       .setRequired(true))),
     run: async(client, interaction) => {
 if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) 
   return interaction.reply(  
     "Rolleri Yönet Yetkiniz Bulunmamakta.")
-let user = interaction.options.getUser();
-let rol = interaction.options.getRole(1010506971176243242);
+const user = interaction.options.getUser("user");
+const member = interaction.guild.members.cache.get(user.id) || await interaction.guild.members.fetch(user.id).catch(err => { });
+const rol = interaction.guild.roles.cache.get("1010506971176243242")
 if(!user) return interaction.reply("Lütfen Rolün Verileceği Kişiyi Belirtiniz.")
 if(!rol) return interaction.reply("Lütfen Verilecek Rolü Belirtiniz.")
-//norex
-interaction.guild.members.cache.get(user.id).roles.add(rol)
+
 const cse = new EmbedBuilder()
 .setColor("Gold")
 .setAuthor("Rol Verdin Sana Knk .D")
