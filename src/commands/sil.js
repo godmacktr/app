@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
 data: new SlashCommandBuilder()
@@ -16,12 +16,12 @@ return interaction.reply({ content: "Mesaj silinemedi. Çok eski mesajlar yada y
 })
   
 
-const embed = new Discord.EmbedBuilder()
+const cse = new EmbedBuilder()
 .setTitle("Mesajlar silindi.")
 .setDescription(`${sayı} mesaj silindi.`)
 .setFooter({text: `${interaction.user.username} tarafından istendi.` })
 .setColor("#0099ff")
-interaction.reply({ embeds: [embed]}).then(async msg => {
+interaction.reply({ embeds: [cse]}).then(async msg => {
 
 setTimeout(async() => {
 await msg.delete().catch(e => {})
@@ -29,4 +29,5 @@ await msg.delete().catch(e => {})
 
 }).catch(err => {})
 
-};
+}
+}
