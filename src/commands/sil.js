@@ -12,7 +12,7 @@ module.exports = {
     ),
   run: async (client, interaction) => {
     let user = interaction.options.getUser("kullanıcı") || interaction.user
-    let sayı = interaction.options.getNumber("num");
+    let sayı = interaction.options.getNumber("sayı");
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages))
       return interaction
         .reply("Yetersiz Yetki! Gereken **Mesajları Yönet**")
@@ -37,7 +37,7 @@ module.exports = {
       .setTitle("Mesajlar silindi.")
       .setDescription(`${sayı} mesaj silindi.`)
       .setFooter({ text: `${user.tag} tarafından istendi.` })
-      .setColor("#0099ff");
+      .setColor('2F3136');
     interaction
       .reply({ embeds: [cse] })
       .then(async (msg) => {

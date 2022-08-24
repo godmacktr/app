@@ -5,9 +5,6 @@ module.exports = {
     .setName('kac-cm')
     .setDescription('Kac Cm Olduğunu Söyler'),
   run: async (client, interaction) => {
-    interaction.channel
-      .send('Hemen Diyorum Abi 1 Saniye..')
-      .then((interaction2) => {
         var espriler = [
           `**  Senin Malafatın** \`18CM\` :eggplant:`,
           `**  Senin Malafatın** \`11CM\` :eggplant:`,
@@ -21,7 +18,6 @@ module.exports = {
           `**  Senin Malafatın** \`1CM\`  :eggplant:`,
         ];
         var espri = espriler[Math.floor(Math.random() * espriler.length)];
-        interaction2.edit(`${espri}`);
-      });
-  },
-};
+     interaction.channel.send
+      }
+  }
