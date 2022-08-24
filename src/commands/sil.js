@@ -3,15 +3,17 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
 data: new SlashCommandBuilder()
     .setName('sil')
-   .setDescription('Mesaj 1 ve 100 arası mesaj silersiniz.'),
-  .addStringOption(option =>
-		option.setName('category')
-			.setDescription('The gif category')
+   .setDescription('Mesaj 1 ve 100 arası mesaj silersiniz.')
+  .addSubcommand(subcommand =>
+		subcommand
+			.setName('sayı')
+			.setDescription('Info about a user')
+			.addNumberOption(option => option.setName('target').setDescription('The user'))),
 run: async (client, interaction, args) => {
 if(!interaction.member.permissions.has("0x0000000000002000")) return interaction.reply("Yetersiz Yetki! Gereken **Mesajları Yönet**").catch(err => {})
   
 let user = interaction.options.getUser("kullanıcı") || interaction.user
-let sayı = args[0]
+let sayı = interaction.options.getNumber('num');
 if(sayı < 1 || sayı > 100) return interaction.reply({ content: "1 ile 100 arasında bir sayı belirtin." }).catch(err => {})
 await interaction.channel.interactions.fetch({limit: sayı})
 .then(interactions => interaction.channel.bulkDelete(interactions))
