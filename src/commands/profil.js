@@ -5,11 +5,11 @@ module.exports = {
 data: new SlashCommandBuilder()
     .setName('profil')
    .setDescription  ('Profilinizi Görüntülersiniz.')
-.addMentionableOption(option => 
-  option.setName('target')
+.addUserOption(option => 
+  option.setName('kullanıcı')
   .setDescription('üye')),
 	run :async (bot, interaction, args) => {
-let user =  interaction.options.getMentionable()
+let user = interaction.options.getUser("target") || interaction.user
 
 const cse = new EmbedBuilder()
 .setColor("Blue")
