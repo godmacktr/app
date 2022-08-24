@@ -21,7 +21,7 @@ module.exports = {
       return interaction
         .reply({ content: "1 ile 100 arasında bir sayı belirtin." })
         .catch((err) => {});
-    await interaction.guild.channel
+    await interaction.channel.messages
       .fetch({ limit: sayı })
       .then((interactions) => interaction.channel.bulkDelete(interactions))
       .catch((err) => {
