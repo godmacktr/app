@@ -5,9 +5,9 @@ data: new SlashCommandBuilder()
     .setName('sil')
    .setDescription('Mesaj 1 ve 100 arası mesaj silersiniz.')
   .addNumberOption(option =>
-			.setName('sayı')
+			option.setName('sayı')
 			.setDescription('Info about a user')),
-run: async (client, interaction, args) => {
+run: async (client, interaction) => {
 if(!interaction.member.permissions.has("0x0000000000002000")) return interaction.reply("Yetersiz Yetki! Gereken **Mesajları Yönet**").catch(err => {})
   
 let user = interaction.options.getUser("kullanıcı") || interaction.user
