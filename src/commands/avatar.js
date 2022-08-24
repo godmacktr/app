@@ -4,12 +4,15 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
 data: new SlashCommandBuilder() 
   .setName('avatar')
-  .setDescription('Avatarınıza bakarsınız.'),
-  run: async(client,  interaction, message) => {
-    let user = interaction.user
+  .setDescription('Etiketlediğiniz Kullanıcının Avatarınıza bakarsınız.')
+.addUserOption(option => 
+  option.setName('kullanıcı')
+  .setDescription('üye')),
+    run: async (client, interaction) => {
+let user = interaction.options.getUser("kullanıcı") || interaction.user
     const cse = new EmbedBuilder()
-    .setDescription(`**[PNG](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "png")}) | [JPG](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "jpg")}) | [WEBP](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "webp")}) | [GIF](${interaction.user.avatarURL({ dynamic: true, size: 1024 }).replace("webp", "gif")})**`)
-    .setImage(interaction.user.avatarURL({ dynamic: true, size: 1024 }))
+    .setDescription(`**[PNG](${user.displayAvatarURL({ dynamic: true, size: 1024 }).replace("webp", "png")}) | [JPG](${user.displayAvatarURL({ dynamic: true, size: 1024 }).replace("webp", "jpg")}) | [WEBP](${user.displayAvatarURL({ dynamic: true, size: 1024 }).replace("webp", "webp")}) | [GIF](${user.displayAvatarURL({ dynamic: true, size: 1024 }).replace("webp", "gif")})**`)
+    .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))
     .setColor("#0099ff")
     return  interaction.reply({ embeds: [cse]}).catch(err => {})
 
