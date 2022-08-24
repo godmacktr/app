@@ -4,11 +4,9 @@ module.exports = {
 data: new SlashCommandBuilder()
     .setName('sil')
    .setDescription('Mesaj 1 ve 100 arası mesaj silersiniz.')
-  .addSubcommand(subcommand =>
-		subcommand
+  .addNumberOption(option =>
 			.setName('sayı')
-			.setDescription('Info about a user')
-			.addNumberOption(option => option.setName('target').setDescription('The user'))),
+			.setDescription('Info about a user')),
 run: async (client, interaction, args) => {
 if(!interaction.member.permissions.has("0x0000000000002000")) return interaction.reply("Yetersiz Yetki! Gereken **Mesajları Yönet**").catch(err => {})
   
