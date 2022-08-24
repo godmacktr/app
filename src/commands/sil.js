@@ -1,5 +1,10 @@
 const Discord = require("discord.js");
-exports.run = async function(client, interaction, args) {
+const { SlashCommandBuilder } = require("@discordjs/builders");
+module.exports = {
+data: new SlashCommandBuilder()
+    .setName('ping')
+   .setDescription  ('Botun Pingini Görürsünüz.'), 
+run: async (client, interaction, args) => {
 if(!interaction.member.permissions.has("0x0000000000002000")) return interaction.reply("Yetersiz Yetki! Gereken **Mesajları Yönet**").catch(err => {})
 
 let sayı = args[0]
