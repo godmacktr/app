@@ -15,7 +15,8 @@
     "@discordjs/builders": "^1.1.0",
     "orio.db": "^3.1.2",
     "db": "^3.3.1",
-    "inflames.db": "^2.5.3"
+    "inflames.db": "^2.5.3",
+    "common-tags": "^1.8.2"
   },
   "engines": {
     "node": "16.x"
