@@ -6,7 +6,7 @@ module.exports = {
 data: new SlashCommandBuilder() 
   .setName('adam-asmaca')
   .setDescription('Adam-asmaca Oynarsınız'),
-run: async(bot, message, args) => {
+run: async(bot, interaction) => {
 let oyndurum = new Set(); // lear mert / discordturkiye.com
   let kelime = [ // buraya kelimelerinizi ekleyin
     "elma",
@@ -41,8 +41,8 @@ let oyndurum = new Set(); // lear mert / discordturkiye.com
     "halat",
     "köprü",
   ];
-  if (oyndurum.has(message.channel.id))
-    return message.reply(
+  if (oyndurum.has(interaction.channel.id))
+    return interaction.reply(
       "Kanal başına sadece bir adam asmaca oyunu meydana gelebilir."
     );
   try {
@@ -55,7 +55,7 @@ let oyndurum = new Set(); // lear mert / discordturkiye.com
     const yanlış = [];
     const display = new Array(cevap.length).fill("_");
     while (cevap.length !== confirmation.length && point < 6) {
-      await message.channel.send(stripIndents`
+      await interaction.channel.send(stripIndents`
                     ${
                       displayText === null
                         ? "**Asura Bot Adam Asmaca**!"
@@ -79,17 +79,17 @@ let oyndurum = new Set(); // lear mert / discordturkiye.com
       const filter = (res) => {
         const choice = res.content.toLowerCase();
         return (
-          res.author.id === message.author.id &&
+          res.author.id === interaction.author.id &&
           !confirmation.includes(choice) &&
           !yanlış.includes(choice)
         );
       };
-      const guess = await message.channel.awaitMessages(filter, {
+      const guess = await interaction.channel.awaitMessages(filter, {
         max: 1,
         time: 300000,
       });
       if (!guess.size) {
-        await message.channel.send({ content: "Zamanın doldu!" });
+        await interaction.channel.send({ content: "Zamanın doldu!" });
         break;
       }
       const choice = guess.first().content.toLowerCase();
@@ -110,15 +110,15 @@ let oyndurum = new Set(); // lear mert / discordturkiye.com
         point++;
       }
     }
-    oyndurum.delete(message.channel.id);
+    oyndurum.delete(interaction.channel.id);
     if (cevap.length === confirmation.length || tahmin)
-      return message.channel.send(
+      return interaction.channel.send(
         `**Tebrikler kelimeyi buldun! ** Kelime: ${cevap}!`
       );
-    return message.channel.send({ content: `Maalesef bilemedin kelime bu: **${cevap}**` });
+    return interaction.channel.send({ content: `Maalesef bilemedin kelime bu: **${cevap}**` });
   } catch (err) {
-    oyndurum.delete(message.channel.id);
-    return message.reply({ content: `Olamaz! Bir Hata Verdi: \`${err.message}\`` });
+    oyndurum.delete(interaction.channel.id);
+    return interaction.reply({ content: `Olamaz! Bir Hata Verdi: \`${err.interaction}\`` });
   }
 }
 }
