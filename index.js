@@ -7,7 +7,6 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db =  require('inflames.db');
-const invites = new Collection();
 
 const clientId = '998288926043291718';
 const guildId = '911587012371427368';
@@ -41,7 +40,6 @@ client.on("ready", async () => {
 })
 
 client.on("guildMemberAdd", async member  => {
-const inviter = await client.users.fetch(invites.inviter.id);
    let açıkmı = db.fetch(`hg_${member.guild.id}`)
    let kanal = db.fetch(`hgkanal_${member.guild.id}`)
     if(açıkmı === "açık") {
@@ -62,7 +60,7 @@ client.on("guildMemberRemove", async member  => {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
 	      .setTitle(`Crex'den Ayrıldınız`)
-	      .setDescription(`<:leaveembed:1012742156408070258> Aramızdan gitmen bizi üzdü ${member} Mutlaka geri gel.`)
+	      .setDescription(`<:leaveembed:1012742156408070258> Aramızdan gitmen bizi üzdü ${member} Mutlaka geri gelmeyi unutma!`)
         .setThumbnail(member.user.avatarURL({ dynamic: true }))
 	      .setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
         client.channels.cache.get(kanal).send({ embeds: [cse] });
