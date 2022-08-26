@@ -7,6 +7,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db =  require('inflames.db');
+const invites = new Collection();
 
 const clientId = '998288926043291718';
 const guildId = '911587012371427368';
