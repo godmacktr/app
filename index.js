@@ -40,6 +40,7 @@ client.on("ready", async () => {
 })
 
 client.on("guildMemberAdd", async member  => {
+const inviter = await client.users.fetch(invite.inviter.id);
    let açıkmı = db.fetch(`hg_${member.guild.id}`)
    let kanal = db.fetch(`hgkanal_${member.guild.id}`)
     if(açıkmı === "açık") {
