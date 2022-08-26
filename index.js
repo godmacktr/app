@@ -46,7 +46,7 @@ client.on("guildMemberAdd", async member  => {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
 	      .setTitle(`Crex'e Hoş Geldiniz!`)
-	      .setDescription(`<:join:1012735673607929896> Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
+	      .setDescription(`<:joinembed:1012743005700104202> Seni aramızda görmek ne güzel ${member}! Kurallarımıza uymayı ve keyif almayı unutmayın!`)
         .setThumbnail(member.user.avatarURL({ dynamic: true }))
 	      .setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
         client.channels.cache.get(kanal).send({ embeds: [cse] });
@@ -60,7 +60,7 @@ client.on("guildMemberRemove", async member  => {
         const cse = new EmbedBuilder()
         .setColor('2F3136')
 	      .setTitle(`Crex'den Ayrıldınız`)
-	      .setDescription(`<:leave:1012737236107800646> Aramızdan gitmen bizi üzdü ${member} Mutlaka geri gel.`)
+	      .setDescription(`<:leaveembed:1012742156408070258> Aramızdan gitmen bizi üzdü ${member} Mutlaka geri gel.`)
         .setThumbnail(member.user.avatarURL({ dynamic: true }))
 	      .setFooter({ text: `Guild Member Count: #${member.guild.memberCount}`, iconURL: 'https://thumbs.dreamstime.com/b/letter-logo-design-simple-modern-logo-design-letter-very-simple-black-background-color-183193944.jpg' });
         client.channels.cache.get(kanal).send({ embeds: [cse] });
