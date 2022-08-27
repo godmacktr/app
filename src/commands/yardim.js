@@ -1,14 +1,11 @@
-const { Discord, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
+const { Discord, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle, SlashCommandBuilder } = require("discord.js");
 module.exports = {
-    slash: true,
-    name: ['yardım'],  
-    description: 'Botun Tüm Komutlarını Sayfalı Olarak Görürsünüz.', 
-    option: [],
-	async execute(client, interaction) {
-            let currentPage = 1;
-
-      const pages = [
-          new EmbedBuilder()
+ data: new SlashCommandBuilder()
+ .setName("yardım")
+ .setDescription("Bottaki Komutları Görürsünüz"),
+	run: async (client, interaction) => {
+    let currentPage = 1
+  const pages = new EmbedBuilder()
               
        .setTitle(`1. Sayfa`)
        .setColor(0xFFD700)
@@ -16,7 +13,7 @@ module.exports = {
                     { name: "1. Sayfa", value: "Sayfa Numarası 1", inline: true },
                 )
       
-          new EmbedBuilder()
+         new EmbedBuilder()
               .setTitle(`2. Sayfa`)
               .setColor(0xFFD700)
               .addFields(
@@ -31,8 +28,6 @@ module.exports = {
                     { name: "3. Sayfa", value: "Sayfa Numarası 3", inline: true },
               
             )
-             
-      ];
       
       const previewButton = new ButtonBuilder()
           .setCustomId("preview")
