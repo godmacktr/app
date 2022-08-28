@@ -8,13 +8,14 @@
     .addRoleOption(option => 
     option.setName('rol')
     .setDescription('Rol Seç')
+                   
     .addStringOption(option => 
       option.setName('mesaj')
-      .setDescription('Bir embed mesajı giriniz'))),
+      .setDescription('Bir embed mesajı giriniz')),
   run: async(client, interaction, args) => {
       if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.channel.send("Yeterli yetkin yok!")
 
-    let rol = interaction.options.getRole('rol');
+    let rol =  interaction.options.getRole("rol")
 
     if(!rol) return interaction.reply("Lütfen bir rol etiketle!")
 
