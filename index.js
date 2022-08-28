@@ -40,22 +40,6 @@ client.on("ready", async () => {
     log(`${client.user.username} Aktif Edildi!`);
 })
 
-client.on('interactionCreate', async interaction => {
-            let butonrol = db.fetch(`buton_rol${interaction.message.id}`)
-          if(!butonrol) return;
-          if (!interaction.isButton()) return;
-          if(interaction.customId === "rol") {
-              if(!interaction.member.roles.cache.has(butonrol)) { 
-              interaction.member.roles.add(butonrol)
-            interaction.reply({content: "Rol Başarıyla Verildi!", ephemeral: true})
-             } else {
-               
-              interaction.member.roles.remove(butonrol)
-            interaction.reply({content: "Rol Başarıyla Alındı!", ephemeral: true})
-          }
-            }
-          })
-
 client.on("guildMemberAdd", async member  => {
    let açıkmı = db.fetch(`hg_${member.guild.id}`)
    let kanal = db.fetch(`hgkanal_${member.guild.id}`)
@@ -90,6 +74,21 @@ client.on("guildMemberAdd", (member) => {
           }
           }) 
 
+client.on('interactionCreate', async interaction => {
+            let butonrol = db.fetch(`buton_rol${interaction.message.id}`)
+          if(!butonrol) return;
+          if (!interaction.isButton()) return;
+          if(interaction.customId === "rol") {
+              if(!interaction.member.roles.cache.has(butonrol)) { 
+              interaction.member.roles.add(butonrol)
+            interaction.reply({content: "Rol Başarıyla Verildi!", ephemeral: true})
+             } else {
+               
+              interaction.member.roles.remove(butonrol)
+            interaction.reply({content: "Rol Başarıyla Alındı!", ephemeral: true})
+          }
+            }
+          })
 
 //event-handler
 const eventFiles = readdirSync('./src/events').filter(file => file.endsWith('.js'));
