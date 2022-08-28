@@ -7,6 +7,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db =  require('inflames.db');
+const croxydb = require("croxydb")
 
 const clientId = '998288926043291718';
 const guildId = '911587012371427368';
@@ -38,6 +39,22 @@ client.on("ready", async () => {
         }
     log(`${client.user.username} Aktif Edildi!`);
 })
+
+client.on('interactionCreate', async interaction => {
+            let butonrol = db.fetch(`buton_rol${interaction.message.id}`)
+          if(!butonrol) return;
+          if (!interaction.isButton()) return;
+          if(interaction.customId === "rol") {
+              if(!interaction.member.roles.cache.has(butonrol)) { 
+              interaction.member.roles.add(butonrol)
+            interaction.reply({content: "Rol Başarıyla Verildi!", ephemeral: true})
+             } else {
+               
+              interaction.member.roles.remove(butonrol)
+            interaction.reply({content: "Rol Başarıyla Alındı!", ephemeral: true})
+          }
+            }
+          })
 
 client.on("guildMemberAdd", async member  => {
    let açıkmı = db.fetch(`hg_${member.guild.id}`)
