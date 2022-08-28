@@ -75,7 +75,7 @@ client.on("guildMemberAdd", (member) => {
           }) 
 
 client.on('interactionCreate', async interaction => {
-            let butonrol = db.fetch(`buton_rol${interaction.message.id}`)
+            let butonrol = db.fetch(`buton_rol${interaction.guild.id}`)
           if(!butonrol) return;
           if (!interaction.isButton()) return;
           if(interaction.customId === "rol") {

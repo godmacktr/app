@@ -1,4 +1,4 @@
-  const { EmbedBuilder, SlashCommandBuilder, PermissionsBitField} = require("discord.js");
+  const { ButtonBuilder, EmbedBuilder, SlashCommandBuilder, PermissionsBitField, ActionRowBuilder, ButtonStyle } = require("discord.js");
   const Discord = require("discord.js")
   const db = require("croxydb")
   module.exports = {
@@ -15,18 +15,18 @@
 
     if(!rol) return interaction.reply("Lütfen bir rol etiketle!")
 
-    let mesaj = args.slice(1).join(" ")
+    let mesaj = interaction.options.getString('input');
     if (!mesaj) return interaction.reply("Lütfen bir embed mesaj yazısı gir!")
     let buttonid = rol.name
     const embed = new EmbedBuilder()
     .setTitle("Asura - Rol Al Sistemi!")
     .setDescription(`${mesaj}`)
     .setColor("#ff0000")
-    const row = new Discord.ActionRowBuilder()
+    const row = new ActionRowBuilder()
     .addComponents(
-    new Discord.ButtonBuilder()
+    new ButtonBuilder()
     .setLabel(rol.name)
-    .setStyle(Discord.ButtonStyle.Secondary)
+    .setStyle(ButtonStyle.Secondary)
     .setCustomId("rol")
     )
     interaction.reply({embeds: [embed], components: [row]}).then((mesaj) => {
