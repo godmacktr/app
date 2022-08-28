@@ -10,7 +10,7 @@ module.exports = {
         .setDescription("sayı belirle")
         .setRequired(true)
     ),
-  run: async (client, interaction) => {
+  run: async (client, interaction, msg) => {
     let user = interaction.options.getUser("kullanıcı") || interaction.user
     let sayı = interaction.options.getNumber("sayı");
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages))
