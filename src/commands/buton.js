@@ -7,15 +7,18 @@
     .setDescription('Butonla Rol Verir')
     .addRoleOption(option => 
     option.setName('rol')
-    .setDescription('Rol Seç')),
+    .setDescription('Rol Seç')
+    .addStringOption(option => 
+      option.setName('mesaj')
+      .setDescription('Bir embed mesajı giriniz'))),
   run: async(client, interaction, args) => {
       if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.channel.send("Yeterli yetkin yok!")
 
-    let rol = interaction.mentions.roles.first()
+    let rol = interaction.options.getRole('rol');
 
     if(!rol) return interaction.reply("Lütfen bir rol etiketle!")
 
-    let mesaj = interaction.options.getString('input');
+    let mesaj = interaction.options.getString('mesaj');
     if (!mesaj) return interaction.reply("Lütfen bir embed mesaj yazısı gir!")
     let buttonid = rol.name
     const embed = new EmbedBuilder()
