@@ -7,7 +7,7 @@
     .setDescription('Butonla Rol Verir')
     .addRoleOption(option => 
     option.setName('rol')
-    .setDescription('Rol Seç')
+    .setDescription('Rol Seç'))
                    
     .addStringOption(option => 
       option.setName('mesaj')

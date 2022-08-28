@@ -34,7 +34,7 @@ module.exports = {
       });
 
     const cse = new EmbedBuilder()
-      .setTitle("Mesajlar silindi.")
+      .setTitle("<:deleteembed:1013354757009711144>  Mesajlar silindi.")
       .setDescription(`${sayı} mesaj silindi.`)
       .setFooter({ text: `${user.tag} tarafından istendi.` })
       .setColor('2F3136');

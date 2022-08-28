@@ -40,6 +40,13 @@ client.on("ready", async () => {
     log(`${client.user.username} Aktif Edildi!`);
 })
 
+client.on('messageCreate', message => {
+  if(message.content.includes("discord.gg/")) {
+    message.delete()
+    message.channel.send(`${message.member} bu sunucuda reklam kesinlikle yasak`)
+  }
+})
+
 client.on("guildMemberAdd", async member  => {
    let açıkmı = db.fetch(`hg_${member.guild.id}`)
    let kanal = db.fetch(`hgkanal_${member.guild.id}`)
