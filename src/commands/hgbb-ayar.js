@@ -1,6 +1,6 @@
 const { PermissionsBitField } = require('discord.js')
 const { SlashCommandBuilder} = require("@discordjs/builders")
-const db =  require('inflames.db');
+const db = require('inflames.db');
 
 module.exports = {
  data: new SlashCommandBuilder()

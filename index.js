@@ -1,13 +1,12 @@
 const { Client, Collection, GatewayIntentBits, Partials, EmbedBuilder } = require("discord.js");
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildIntegrations, GatewayIntentBits.GuildWebhooks, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.MessageContent], shards: "auto", partials: [Partials.Message, Partials.Channel, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.User, Partials.ThreadMember]});
-const { prefix, owner, token } = require("./config.js");
+const { owner} = require("./config.js");
 const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const db =  require('inflames.db');
-const croxydb = require("croxydb")
+const db = require("inflames.db")
 
 const clientId = '998288926043291718';
 const guildId = '911587012371427368';
@@ -80,7 +79,6 @@ client.on("guildMemberAdd", (member) => {
         member.roles.add(db.get(`otorol_${member.guild.id}`))
           }
           }) 
-
 client.on('interactionCreate', async interaction => {
             let butonrol = db.fetch(`buton_rol${interaction.guild.id}`)
           if(!butonrol) return;

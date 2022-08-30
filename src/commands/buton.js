@@ -1,6 +1,7 @@
   const { ButtonBuilder, EmbedBuilder, SlashCommandBuilder, PermissionsBitField, ActionRowBuilder, ButtonStyle } = require("discord.js");
   const Discord = require("discord.js")
-  const db = require("croxydb")
+  const db = require("inflames.db")
+  
   module.exports = {
   data: new SlashCommandBuilder()
    .setName('buton-rol')
@@ -8,7 +9,7 @@
     .addRoleOption(option => 
     option.setName('rol')
     .setDescription('Rol Seç'))
-                   
+                     
     .addStringOption(option => 
       option.setName('mesaj')
       .setDescription('Bir embed mesajı giriniz')),
